@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Authorization on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/authorization/</link><description>Recent content in Authorization on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/authorization/index.xml" rel="self" type="application/rss+xml"/><item><title>OAuth2 On-Behalf-Of Flow: A Complete Guide for Microservices</title><link>https://gazsecops.github.io/posts/oauth2-obo-flow-complete-guide/</link><pubDate>Wed, 04 Feb 2026 12:28:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/oauth2-obo-flow-complete-guide/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Service A already has the user&amp;rsquo;s access token. Why don&amp;rsquo;t we just forward it to Service B?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Because it isn&amp;rsquo;t for Service B. Wrong audience, wrong scopes, and you just turned one compromise into &amp;ldquo;own the lot&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; So what&amp;rsquo;s the right way?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Exchange it. Get a token meant for Service B, on behalf of the user. Validate it at Service B. Every time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The On-Behalf-Of (OBO) flow is one of the lesser-understood OAuth2 grant types, yet it&amp;rsquo;s critical for secure microservice architectures.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+OBO is how you keep user identity across service boundaries without turning your API gateway into a skeleton key.
+&lt;/aside&gt;
+&lt;p&gt;It matters because it preserves user identity through a service chain, enables proper audit trails, and limits the damage when a single service gets popped.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re building microservices that need to maintain user context across service boundaries, this covers when to use OBO versus client credentials, security considerations, and practical implementation patterns.&lt;/p&gt;</description></item></channel></rss>

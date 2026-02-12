@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prometheus on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/prometheus/</link><description>Recent content in Prometheus on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/prometheus/index.xml" rel="self" type="application/rss+xml"/><item><title>Prometheus for Security: Monitoring What Actually Matters</title><link>https://gazsecops.github.io/posts/prometheus-security-monitoring/</link><pubDate>Fri, 18 Oct 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/prometheus-security-monitoring/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need better visibility into security events.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are you currently monitoring?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Service uptime. CPU. Memory. The usual.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about failed logins? Unexpected services? File changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; That&amp;rsquo;s what the SIEM is for.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; When did you last look at the SIEM?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;hellip;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This is the problem with security monitoring. Teams spend thousands on SIEMs that nobody uses. Meanwhile, Prometheus sits there collecting metrics, and nobody thinks to point it at security problems.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security monitoring doesn't need a six-figure SIEM budget. It needs metrics that matter, alerts that fire when something's actually wrong, and people who respond when they do."
+&lt;/aside&gt;
+&lt;p&gt;Prometheus is already in your infrastructure. It&amp;rsquo;s collecting metrics. It&amp;rsquo;s generating alerts. You just need to point it at the right things.&lt;/p&gt;</description></item></channel></rss>

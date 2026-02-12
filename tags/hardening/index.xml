@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hardening on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/hardening/</link><description>Recent content in Hardening on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/hardening/index.xml" rel="self" type="application/rss+xml"/><item><title>SSH Hardening: What Actually Matters</title><link>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</link><pubDate>Tue, 18 Mar 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I&amp;rsquo;ve hardened SSH. Disabled root login, changed the port, installed fail2ban.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Changed the port?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Yeah, moved it to 2222. Security through obscurity.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; A port scan takes four seconds. What about certificate auth?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about what?&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;SSH hardening advice on the internet falls into two categories: the stuff that doesn&amp;rsquo;t matter (change the port, install fail2ban, add a banner) and the stuff that does matter but nobody explains properly (certificate auth, key management, agent forwarding risks, auditing).&lt;/p&gt;
+&lt;p&gt;This post is about the second category.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+The threat isn't someone brute-forcing your SSH port. It's the key that's been sitting in a developer's home directory since 2019, with no passphrase, copied to six machines.
+&lt;/aside&gt;
+&lt;p&gt;If you&amp;rsquo;re running Linux servers - on-prem, cloud, doesn&amp;rsquo;t matter - SSH is your management plane. If SSH is compromised, everything behind it is compromised. Treat it accordingly.&lt;/p&gt;</description></item></channel></rss>

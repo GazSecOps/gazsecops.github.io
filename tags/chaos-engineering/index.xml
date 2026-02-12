@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chaos-Engineering on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/chaos-engineering/</link><description>Recent content in Chaos-Engineering on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/chaos-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Chaos Engineering as Security Tool: Breaking Things to Make Them Stronger</title><link>https://gazsecops.github.io/posts/chaos-engineering-security-tool/</link><pubDate>Thu, 15 May 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/chaos-engineering-security-tool/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; Our security team is world-class. Firewalls, IDS, EDR, SIEM. We&amp;rsquo;re covered.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sre"&gt;SRE:&lt;/span&gt; What happens if a switch fails? Or database goes down? Or network partitions?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; That&amp;rsquo;s ops problem. Security is about preventing attacks.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sre"&gt;SRE:&lt;/span&gt; Security without resilience is useless. If everything breaks under pressure, attacker wins. If you survive chaos, attacker doesn&amp;rsquo;t matter.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"The best security test isn't a penetration test. It's Game Day when everything tries to break at once and you see what holds together."
+&lt;/aside&gt;
+&lt;p&gt;Traditional security is defensive. Firewalls, EDR, access controls. Prevent attacks, detect intruders, respond to incidents. But there&amp;rsquo;s a problem: you only know your defenses work when someone attacks. And you only find weaknesses when they&amp;rsquo;re exploited.&lt;/p&gt;
+&lt;p&gt;Chaos engineering is offensive. You break things on purpose. Systematically. Repeatedly. Not to cause problems, but to discover them. To find where your resilience fails before attackers exploit those failures.&lt;/p&gt;</description></item></channel></rss>

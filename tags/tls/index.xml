@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tls on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/tls/</link><description>Recent content in Tls on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:40:51 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/tls/index.xml" rel="self" type="application/rss+xml"/><item><title>Smallstep step-ca: Running Internal PKI Without Losing Your Mind</title><link>https://gazsecops.github.io/posts/stepca-running-internal-pki/</link><pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/stepca-running-internal-pki/</guid><description>&lt;p&gt;If you read my post on building your own CA and thought &amp;ldquo;fine, but how do I actually issue certs without becoming the Certificate Person&amp;rdquo;, this is the next step.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;step-ca&lt;/code&gt; (Smallstep Certificate Authority) is the bit that makes internal PKI usable: automated issuance, short-lived certs, predictable renewal, and enough policy to stop someone minting a wildcard for your entire estate.&lt;/p&gt;
+&lt;p&gt;It also gives you a new thing to break at 3am.&lt;/p&gt;
+&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; Everything that talks TLS is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; But we rotated the certs yesterday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; You rotated them to a CA chain nobody trusts. Also the CA is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; How can the CA being down break existing connections?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It doesn&amp;rsquo;t. The expiry storm you scheduled does.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+Internal PKI fails in three ways: you lose the keys, you lose the trust, or you lose control of issuance.
+&lt;/aside&gt;
+&lt;p&gt;This post covers a practical &lt;code&gt;step-ca&lt;/code&gt; setup on a Linux VM, what to lock down, how to issue and renew certs, and the failure modes I&amp;rsquo;ve seen in the wild.&lt;/p&gt;</description></item><item><title>Building Your Own CA: Guardrails, Browser Trust, and Why Most Internal PKI is Broken</title><link>https://gazsecops.github.io/posts/building-your-own-ca/</link><pubDate>Wed, 15 Oct 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/building-your-own-ca/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We just need to issue some internal certs. How hard can it be?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Hard enough that you&amp;rsquo;ll be arguing about wildcards and trust stores in 18 months.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Famous last words. Eighteen months later, you&amp;rsquo;re dealing with wildcard certs everywhere, browsers rejecting perfectly valid certificates, and nobody understands why the monitoring system stopped working after a cert renewal.&lt;/p&gt;
+&lt;p&gt;Internal PKI isn&amp;rsquo;t hard because the cryptography is complex. It&amp;rsquo;s hard because most organizations skip the guardrails that make PKI safe to operate at scale.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"A CA without constraints is like giving everyone admin access and hoping they'll be responsible. Works fine until it doesn't."
+&lt;/aside&gt;
+&lt;p&gt;This is about building internal PKI properly. Not the minimum viable certificate authority. The kind that doesn&amp;rsquo;t explode when someone makes a mistake.&lt;/p&gt;</description></item></channel></rss>

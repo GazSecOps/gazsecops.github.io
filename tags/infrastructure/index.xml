@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Infrastructure on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/infrastructure/</link><description>Recent content in Infrastructure on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/infrastructure/index.xml" rel="self" type="application/rss+xml"/><item><title>Building Your Own CA: Guardrails, Browser Trust, and Why Most Internal PKI is Broken</title><link>https://gazsecops.github.io/posts/building-your-own-ca/</link><pubDate>Wed, 15 Oct 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/building-your-own-ca/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We just need to issue some internal certs. How hard can it be?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Hard enough that you&amp;rsquo;ll be arguing about wildcards and trust stores in 18 months.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Famous last words. Eighteen months later, you&amp;rsquo;re dealing with wildcard certs everywhere, browsers rejecting perfectly valid certificates, and nobody understands why the monitoring system stopped working after a cert renewal.&lt;/p&gt;
+&lt;p&gt;Internal PKI isn&amp;rsquo;t hard because the cryptography is complex. It&amp;rsquo;s hard because most organizations skip the guardrails that make PKI safe to operate at scale.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"A CA without constraints is like giving everyone admin access and hoping they'll be responsible. Works fine until it doesn't."
+&lt;/aside&gt;
+&lt;p&gt;This is about building internal PKI properly. Not the minimum viable certificate authority. The kind that doesn&amp;rsquo;t explode when someone makes a mistake.&lt;/p&gt;</description></item></channel></rss>

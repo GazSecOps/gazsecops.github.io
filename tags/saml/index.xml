@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Saml on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/saml/</link><description>Recent content in Saml on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/saml/index.xml" rel="self" type="application/rss+xml"/><item><title>OAuth2 vs SAML: Which One and Why?</title><link>https://gazsecops.github.io/posts/oauth2-vs-saml-differences/</link><pubDate>Mon, 10 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/oauth2-vs-saml-differences/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need single sign-on for our new internal app.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What kind? OAuth2 or SAML?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Does it matter? They both do login.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; One&amp;rsquo;s for APIs and mobile apps. The other&amp;rsquo;s for enterprise SSO. Yeah, it matters.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"SAML is what enterprises use because they've used it for 20 years and it works. OAuth2 is what startups use because it's simple and modern. Neither is wrong, just different."
+&lt;/aside&gt;
+&lt;p&gt;I&amp;rsquo;ve had this conversation too many times. Someone builds a new internal application, needs authentication, gets confused between OAuth2 and SAML. They&amp;rsquo;re both &amp;ldquo;login with company account&amp;rdquo; from user&amp;rsquo;s perspective. Underneath? Completely different protocols for different problems.&lt;/p&gt;</description></item></channel></rss>

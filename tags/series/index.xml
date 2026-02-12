@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Series on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/series/</link><description>Recent content in Series on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:44:12 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/series/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 8 - Practical Tools That Actually Help (Bonus Episode)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-8/</link><pubDate>Fri, 30 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-8/</guid><description>&lt;p&gt;Part 7 was meant to be the end. &amp;ldquo;Good luck, you&amp;rsquo;ll need it.&amp;rdquo; Fin.&lt;/p&gt;
+&lt;p&gt;Then someone asked: &amp;ldquo;Alright, but what tools actually work? Not vendor pitches. Not &amp;lsquo;AI observability platforms&amp;rsquo; that cost more than my salary. Actual tools that help run AI systems without making everything worse.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Fair question.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The best AI ops tools are the boring ones. Prometheus. Grafana. Python scripts. Git. The same tools you'd use for normal systems, just pointed at different metrics."
+&lt;/aside&gt;
+&lt;p&gt;Bonus episode. Practical tools and techniques that actually help when you&amp;rsquo;re running AI systems. Things I&amp;rsquo;ve used. Things that work.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 7 - Why Smart People Keep Making Dumb Decisions</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</link><pubDate>Fri, 23 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</guid><description>&lt;p&gt;Six parts of this series explaining what goes wrong with AI systems. Testing that doesn&amp;rsquo;t happen. Monitoring that doesn&amp;rsquo;t exist. Models shipped before they&amp;rsquo;re ready. Incidents that could have been prevented.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;d think after reading all that, teams would learn. They don&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;The same mistakes happen over and over. Not because people are stupid. Because the organizational incentives guarantee failure.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"You can have thorough testing or you can ship by Friday. You can't have both. Management always picks Friday."
+&lt;/aside&gt;
+&lt;p&gt;Part 7. The last of the core series. Why organizations are structurally incapable of running AI systems properly, and what you can do about it (spoiler: not much).&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 6 - Case Studies (What Actually Goes Wrong)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-6/</link><pubDate>Fri, 16 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-6/</guid><description>&lt;p&gt;This is where I tell you about actual AI deployments that went wrong. Real incidents. Real failures. Real consequences.&lt;/p&gt;
+&lt;p&gt;Names changed. Details changed enough that you can&amp;rsquo;t identify the companies. But the failures? Those are real.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Every AI disaster follows the same pattern: someone knew it was broken, someone decided to ship it anyway, and someone else carried the can when it broke in production."
+&lt;/aside&gt;
+&lt;p&gt;Part 6 of the series. Case studies. Learn from other people&amp;rsquo;s mistakes so you don&amp;rsquo;t repeat them.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 5 - When to Say No (And How to Make It Stick)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</link><pubDate>Fri, 09 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the customer sentiment analysis model by end of week.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It&amp;rsquo;s not ready.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The client&amp;rsquo;s expecting it.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It fails on 30% of non-English inputs. Your client has international customers.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We&amp;rsquo;ll fix that in the next release.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; No.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; What do you mean, no?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I mean no. We&amp;rsquo;re not deploying broken software because someone made a promise we can&amp;rsquo;t keep.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation never goes well. Have it anyway.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The person saying 'we can't ship this' is always the bad guy. Right up until production breaks and suddenly everyone's asking why we didn't catch this in testing."
+&lt;/aside&gt;
+&lt;p&gt;Part 5 of the series. This one&amp;rsquo;s about saying no. When to do it, how to do it, and how to not get fired for it.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 4 - Testing Before You Ship (Or: Stop Discovering Bugs in Production)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</link><pubDate>Fri, 02 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ve tested the model. It works.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What did you test?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We ran it on the validation set. 94% accuracy.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The ones that will break it in production.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ll handle those when we see them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And that&amp;rsquo;s how you end up debugging at 3am.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Testing that your model loads and returns predictions is not testing. That's checking if Python still works. Testing is finding out all the ways your model breaks before your users do."
+&lt;/aside&gt;
+&lt;p&gt;Part 4 of the series. This one&amp;rsquo;s about testing AI systems before deployment. Not the &amp;ldquo;it runs on my laptop&amp;rdquo; kind of testing. The &amp;ldquo;I&amp;rsquo;ve actively tried to break this and couldn&amp;rsquo;t&amp;rdquo; kind of testing.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 3 - Incident Response When You Have No Idea Why</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-3/</link><pubDate>Fri, 19 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-3/</guid><description>&lt;p&gt;3:47am. Phone rings. On-call engineer sounds panicked.&lt;/p&gt;
+&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; The model&amp;rsquo;s broken.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What&amp;rsquo;s it doing?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Giving wrong answers.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; How wrong?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Very wrong. Accuracy dropped from 92% to 54% in the last hour.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Any deployment changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; No.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Input data look different?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Don&amp;rsquo;t know. How do I check?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can you roll back?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; To what? The model hasn&amp;rsquo;t changed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Welcome to AI incident response.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Normal incident: 'The database crashed.' AI incident: 'The model's giving wrong answers and nobody knows why because machine learning is basically a magic box that we've convinced ourselves we understand.'"
+&lt;/aside&gt;
+&lt;p&gt;Part 3 of the series. This one&amp;rsquo;s about what to do when your AI system breaks at 3am and you&amp;rsquo;re expected to have answers you don&amp;rsquo;t have.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 2 - Monitoring That Actually Works</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The model&amp;rsquo;s working fine. Look, uptime is 99.9%!&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; And the accuracy?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The accuracy. What percentage of predictions are correct?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We don&amp;rsquo;t track that.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then you don&amp;rsquo;t know if it&amp;rsquo;s working.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Your monitoring dashboard shows five green lights and one red one. The red one is 'model accuracy: unknown'. That's not a monitoring problem. That's a career problem."
+&lt;/aside&gt;
+&lt;p&gt;Part 2 of the series on running AI systems. This one&amp;rsquo;s about monitoring. Not the useless kind vendors sell you. The kind that actually tells you when things are broken before management finds out from Twitter.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 1 - Who Carries the Can?</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</link><pubDate>Fri, 05 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the AI model to production by Friday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Have you tested it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The data scientists say it&amp;rsquo;s good.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s not what I asked.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Well, no, but marketing promised the client-&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then no.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"When your AI system denies someone's mortgage application because they have a Welsh surname, guess who gets the phone call? Not the data scientist. Not the VP of Innovation. You."
+&lt;/aside&gt;
+&lt;p&gt;This is part one of a series about running AI systems when you&amp;rsquo;re the poor sod responsible for keeping them alive. Not the hand-wavy ethics stuff. The practical bits: what breaks, how to know it&amp;rsquo;s broken, and how to not get blamed when it inevitably goes sideways.&lt;/p&gt;</description></item></channel></rss>

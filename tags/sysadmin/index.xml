@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sysadmin on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/sysadmin/</link><description>Recent content in Sysadmin on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:40:51 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/sysadmin/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 1 - Who Carries the Can?</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</link><pubDate>Fri, 05 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the AI model to production by Friday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Have you tested it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The data scientists say it&amp;rsquo;s good.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s not what I asked.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Well, no, but marketing promised the client-&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then no.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"When your AI system denies someone's mortgage application because they have a Welsh surname, guess who gets the phone call? Not the data scientist. Not the VP of Innovation. You."
+&lt;/aside&gt;
+&lt;p&gt;This is part one of a series about running AI systems when you&amp;rsquo;re the poor sod responsible for keeping them alive. Not the hand-wavy ethics stuff. The practical bits: what breaks, how to know it&amp;rsquo;s broken, and how to not get blamed when it inevitably goes sideways.&lt;/p&gt;</description></item></channel></rss>

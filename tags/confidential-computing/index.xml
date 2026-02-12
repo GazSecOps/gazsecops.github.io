@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Confidential-Computing on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/confidential-computing/</link><description>Recent content in Confidential-Computing on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/confidential-computing/index.xml" rel="self" type="application/rss+xml"/><item><title>Confidential Computing: Processing Data While Keeping It Secret</title><link>https://gazsecops.github.io/posts/confidential-computing-encrypted-data-processing/</link><pubDate>Sat, 01 Mar 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/confidential-computing-encrypted-data-processing/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; Our data never leaves the network. Encrypted at rest, encrypted in transit. We&amp;rsquo;re covered.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What happens when we need to process it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; We decrypt it, process it, encrypt it again. Standard procedure.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What if we could process it without ever decrypting it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; Impossible. You can&amp;rsquo;t do math on encrypted data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"The revolution isn't preventing access to data. It's processing data you never access."
+&lt;/aside&gt;
+&lt;p&gt;Traditional encryption works by keeping data secret until you need it. Decrypt, process, encrypt again. It&amp;rsquo;s worked for decades. But it has a fundamental limitation: at some point, the data must be exposed in plaintext.&lt;/p&gt;
+&lt;p&gt;Confidential computing flips this on its head. Instead of protecting data by controlling who can access it, we protect data by ensuring it&amp;rsquo;s never accessible in plaintext at all. Even during processing.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t theoretical. Companies are using it today. Financial analytics on encrypted transactions. Healthcare processing without seeing patient records. Collaborative fraud detection between competitors without sharing raw data.&lt;/p&gt;</description></item></channel></rss>

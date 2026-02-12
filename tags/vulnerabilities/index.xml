@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vulnerabilities on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/vulnerabilities/</link><description>Recent content in Vulnerabilities on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/vulnerabilities/index.xml" rel="self" type="application/rss+xml"/><item><title>Supply Chain Attacks: How They Happen and What Actually Works to Stop Them</title><link>https://gazsecops.github.io/posts/supply-chain-attacks-how-they-happen/</link><pubDate>Mon, 10 Nov 2025 14:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/supply-chain-attacks-how-they-happen/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Our own code is secure. Dependencies from npm, GitHub, Docker Hub. That&amp;rsquo;s safe, right?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s where most attacks actually happen.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; But those maintainers are legit companies!&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; So were SolarWinds and Log4j maintainers. What&amp;rsquo;s your point?&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"The attack surface isn't what you wrote. It's everything you trusted. And you trusted a lot."
+&lt;/aside&gt;
+&lt;p&gt;We obsess over secure coding practices. Input validation, authentication, access controls. But then we pull in 2000 dependencies from npm, PyPI, Docker Hub. We download images, run unverified binaries, trust package maintainers we&amp;rsquo;ve never met.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s where supply chain attacks live. Not in your code. In everyone else&amp;rsquo;s.&lt;/p&gt;</description></item></channel></rss>

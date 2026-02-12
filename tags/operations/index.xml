@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Operations on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/operations/</link><description>Recent content in Operations on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 12:32:36 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/operations/index.xml" rel="self" type="application/rss+xml"/><item><title>Workload Identity: Giving Your Services an Identity Without the Secret Sprawl</title><link>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</link><pubDate>Sun, 08 Feb 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The database connection is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Check the credentials in the config.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Which config? There are twelve.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The one with the password that expires every 90 days.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; That expired yesterday. Nobody told me.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Did you check the rotation runbook?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The runbook is in a wiki that requires the database to log in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Service accounts. API keys. Connection strings. Database passwords scattered across config files, environment variables, Kubernetes secrets, and that one spreadsheet someone maintains &amp;ldquo;just in case&amp;rdquo;. This is how most organisations handle non-human identity. It&amp;rsquo;s also how most organisations get compromised.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Every hardcoded credential is a future incident waiting to happen. The question isn't whether it leaks - it's whether you notice when it does.
+&lt;/aside&gt;
+&lt;p&gt;Workload identity is about giving your services proper identities without the secret sprawl. Not another password to rotate. Not another API key to revoke when it appears in a GitHub commit. An identity that your infrastructure manages, rotates, and revokes automatically.&lt;/p&gt;
+&lt;p&gt;This post covers what workload identity actually means, how to implement it on major clouds and on-prem, and the practical patterns that make it survivable.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 8 - Practical Tools That Actually Help (Bonus Episode)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-8/</link><pubDate>Fri, 30 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-8/</guid><description>&lt;p&gt;Part 7 was meant to be the end. &amp;ldquo;Good luck, you&amp;rsquo;ll need it.&amp;rdquo; Fin.&lt;/p&gt;
+&lt;p&gt;Then someone asked: &amp;ldquo;Alright, but what tools actually work? Not vendor pitches. Not &amp;lsquo;AI observability platforms&amp;rsquo; that cost more than my salary. Actual tools that help run AI systems without making everything worse.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Fair question.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The best AI ops tools are the boring ones. Prometheus. Grafana. Python scripts. Git. The same tools you'd use for normal systems, just pointed at different metrics."
+&lt;/aside&gt;
+&lt;p&gt;Bonus episode. Practical tools and techniques that actually help when you&amp;rsquo;re running AI systems. Things I&amp;rsquo;ve used. Things that work.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 7 - Why Smart People Keep Making Dumb Decisions</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</link><pubDate>Fri, 23 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</guid><description>&lt;p&gt;Six parts of this series explaining what goes wrong with AI systems. Testing that doesn&amp;rsquo;t happen. Monitoring that doesn&amp;rsquo;t exist. Models shipped before they&amp;rsquo;re ready. Incidents that could have been prevented.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;d think after reading all that, teams would learn. They don&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;The same mistakes happen over and over. Not because people are stupid. Because the organizational incentives guarantee failure.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"You can have thorough testing or you can ship by Friday. You can't have both. Management always picks Friday."
+&lt;/aside&gt;
+&lt;p&gt;Part 7. The last of the core series. Why organizations are structurally incapable of running AI systems properly, and what you can do about it (spoiler: not much).&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 6 - Case Studies (What Actually Goes Wrong)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-6/</link><pubDate>Fri, 16 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-6/</guid><description>&lt;p&gt;This is where I tell you about actual AI deployments that went wrong. Real incidents. Real failures. Real consequences.&lt;/p&gt;
+&lt;p&gt;Names changed. Details changed enough that you can&amp;rsquo;t identify the companies. But the failures? Those are real.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Every AI disaster follows the same pattern: someone knew it was broken, someone decided to ship it anyway, and someone else carried the can when it broke in production."
+&lt;/aside&gt;
+&lt;p&gt;Part 6 of the series. Case studies. Learn from other people&amp;rsquo;s mistakes so you don&amp;rsquo;t repeat them.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 5 - When to Say No (And How to Make It Stick)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</link><pubDate>Fri, 09 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the customer sentiment analysis model by end of week.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It&amp;rsquo;s not ready.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The client&amp;rsquo;s expecting it.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It fails on 30% of non-English inputs. Your client has international customers.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We&amp;rsquo;ll fix that in the next release.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; No.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; What do you mean, no?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I mean no. We&amp;rsquo;re not deploying broken software because someone made a promise we can&amp;rsquo;t keep.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation never goes well. Have it anyway.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The person saying 'we can't ship this' is always the bad guy. Right up until production breaks and suddenly everyone's asking why we didn't catch this in testing."
+&lt;/aside&gt;
+&lt;p&gt;Part 5 of the series. This one&amp;rsquo;s about saying no. When to do it, how to do it, and how to not get fired for it.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 4 - Testing Before You Ship (Or: Stop Discovering Bugs in Production)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</link><pubDate>Fri, 02 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ve tested the model. It works.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What did you test?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We ran it on the validation set. 94% accuracy.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The ones that will break it in production.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ll handle those when we see them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And that&amp;rsquo;s how you end up debugging at 3am.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Testing that your model loads and returns predictions is not testing. That's checking if Python still works. Testing is finding out all the ways your model breaks before your users do."
+&lt;/aside&gt;
+&lt;p&gt;Part 4 of the series. This one&amp;rsquo;s about testing AI systems before deployment. Not the &amp;ldquo;it runs on my laptop&amp;rdquo; kind of testing. The &amp;ldquo;I&amp;rsquo;ve actively tried to break this and couldn&amp;rsquo;t&amp;rdquo; kind of testing.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 3 - Incident Response When You Have No Idea Why</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-3/</link><pubDate>Fri, 19 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-3/</guid><description>&lt;p&gt;3:47am. Phone rings. On-call engineer sounds panicked.&lt;/p&gt;
+&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; The model&amp;rsquo;s broken.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What&amp;rsquo;s it doing?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Giving wrong answers.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; How wrong?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Very wrong. Accuracy dropped from 92% to 54% in the last hour.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Any deployment changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; No.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Input data look different?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; Don&amp;rsquo;t know. How do I check?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can you roll back?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;OnCall:&lt;/span&gt; To what? The model hasn&amp;rsquo;t changed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Welcome to AI incident response.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Normal incident: 'The database crashed.' AI incident: 'The model's giving wrong answers and nobody knows why because machine learning is basically a magic box that we've convinced ourselves we understand.'"
+&lt;/aside&gt;
+&lt;p&gt;Part 3 of the series. This one&amp;rsquo;s about what to do when your AI system breaks at 3am and you&amp;rsquo;re expected to have answers you don&amp;rsquo;t have.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 2 - Monitoring That Actually Works</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The model&amp;rsquo;s working fine. Look, uptime is 99.9%!&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; And the accuracy?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The accuracy. What percentage of predictions are correct?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We don&amp;rsquo;t track that.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then you don&amp;rsquo;t know if it&amp;rsquo;s working.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Your monitoring dashboard shows five green lights and one red one. The red one is 'model accuracy: unknown'. That's not a monitoring problem. That's a career problem."
+&lt;/aside&gt;
+&lt;p&gt;Part 2 of the series on running AI systems. This one&amp;rsquo;s about monitoring. Not the useless kind vendors sell you. The kind that actually tells you when things are broken before management finds out from Twitter.&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 1 - Who Carries the Can?</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</link><pubDate>Fri, 05 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-1/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the AI model to production by Friday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Have you tested it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The data scientists say it&amp;rsquo;s good.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s not what I asked.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Well, no, but marketing promised the client-&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then no.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"When your AI system denies someone's mortgage application because they have a Welsh surname, guess who gets the phone call? Not the data scientist. Not the VP of Innovation. You."
+&lt;/aside&gt;
+&lt;p&gt;This is part one of a series about running AI systems when you&amp;rsquo;re the poor sod responsible for keeping them alive. Not the hand-wavy ethics stuff. The practical bits: what breaks, how to know it&amp;rsquo;s broken, and how to not get blamed when it inevitably goes sideways.&lt;/p&gt;</description></item><item><title>Beyond Scanning: What Security as Code Really Means</title><link>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</link><pubDate>Sat, 22 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; We&amp;rsquo;ve got security as code! Look, the dashboard shows our scans running in CI.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; That&amp;rsquo;s scanning as code. Not the same thing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; What&amp;rsquo;s the difference?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; About five years of security incidents you haven&amp;rsquo;t had yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Adding a scanner to your pipeline is like adding a smoke detector to a building. Useful, but not the same as building with fire-resistant materials in the first place."
+&lt;/aside&gt;
+&lt;p&gt;Security as Code isn&amp;rsquo;t about running more scanners automatically. It&amp;rsquo;s about fundamentally changing how security gets built into systems. Most organizations miss this. They automate detection, declare victory, then wonder why breaches still happen.&lt;/p&gt;</description></item><item><title>Penetration Testing: What Actually Works vs What You Usually Get</title><link>https://gazsecops.github.io/posts/penetration-testing-what-works/</link><pubDate>Thu, 20 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/penetration-testing-what-works/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need a penetration test for compliance.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are we testing?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Everything.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s not a scope. What&amp;rsquo;s the goal?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The goal is to check the box that says we had a penetration test.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then you don&amp;rsquo;t need a pentest. You need a rubber stamp.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Most penetration testing is security theater. A PDF appears once a year, lists findings you already knew about, gets filed away, nothing changes. The checkbox is ticked. Compliance is satisfied. Security hasn&amp;rsquo;t improved.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+A pentest that tells you what you already know is an expensive way to avoid fixing problems. A pentest that surprises you is valuable - but only if you actually fix what it finds.
+&lt;/aside&gt;
+&lt;p&gt;This isn&amp;rsquo;t about shitting on pentesters. Good pentesters are worth their weight in gold. This is about how to get actual value from penetration testing instead of buying an expensive PDF that nobody reads.&lt;/p&gt;</description></item><item><title>Smallstep step-ca: Running Internal PKI Without Losing Your Mind</title><link>https://gazsecops.github.io/posts/stepca-running-internal-pki/</link><pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/stepca-running-internal-pki/</guid><description>&lt;p&gt;If you read my post on building your own CA and thought &amp;ldquo;fine, but how do I actually issue certs without becoming the Certificate Person&amp;rdquo;, this is the next step.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;step-ca&lt;/code&gt; (Smallstep Certificate Authority) is the bit that makes internal PKI usable: automated issuance, short-lived certs, predictable renewal, and enough policy to stop someone minting a wildcard for your entire estate.&lt;/p&gt;
+&lt;p&gt;It also gives you a new thing to break at 3am.&lt;/p&gt;
+&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; Everything that talks TLS is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; But we rotated the certs yesterday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; You rotated them to a CA chain nobody trusts. Also the CA is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; How can the CA being down break existing connections?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It doesn&amp;rsquo;t. The expiry storm you scheduled does.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+Internal PKI fails in three ways: you lose the keys, you lose the trust, or you lose control of issuance.
+&lt;/aside&gt;
+&lt;p&gt;This post covers a practical &lt;code&gt;step-ca&lt;/code&gt; setup on a Linux VM, what to lock down, how to issue and renew certs, and the failure modes I&amp;rsquo;ve seen in the wild.&lt;/p&gt;</description></item><item><title>Security as Code: From Checklists to Automation</title><link>https://gazsecops.github.io/posts/security-as-code/</link><pubDate>Thu, 18 Sep 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-as-code/</guid><description>&lt;p&gt;&amp;ldquo;Here&amp;rsquo;s the security checklist for the new release.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re deploying next week. When can we do the review?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;The review takes two weeks minimum. You scheduled it last month.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;we didn&amp;rsquo;t.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This is the problem with security checklists. They&amp;rsquo;re designed for a world where you deploy quarterly. In continuous deployment environments, they&amp;rsquo;re the wrong tool.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security checklists codify knowledge but don't scale. Security as Code codifies requirements into executable tests. Checklists tell you what to check. Code checks it for you, every time."
+&lt;/aside&gt;
+&lt;p&gt;The evolution from checklists to code isn&amp;rsquo;t about abandoning security knowledge. It&amp;rsquo;s about making security verification scale with modern development practices.&lt;/p&gt;</description></item><item><title>Zero Trust: What It Actually Means When You Have to Implement It</title><link>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</link><pubDate>Tue, 05 Aug 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Our zero trust platform provides seamless, frictionless, AI-powered security across your entire estate.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What does it actually do?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; It verifies every request, every time, everywhere.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; So does a firewall rule and a login page. What does yours do differently?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; &amp;hellip;it has a dashboard.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Zero trust has become the most abused term in security marketing. Every vendor has a zero trust product. Every slide deck has a zero trust slide. Every CISO has a zero trust initiative.&lt;/p&gt;
+&lt;p&gt;Most of them are buying a product and calling it a strategy.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Zero trust is not a product. It's the slow, painful process of removing implicit trust from your network, one assumption at a time.
+&lt;/aside&gt;
+&lt;p&gt;This post is about what zero trust actually looks like when you have to implement it. Not the conference version. The version where you&amp;rsquo;re staring at a network diagram, a list of legacy systems, and a budget that won&amp;rsquo;t cover half of what the vendors quoted you.&lt;/p&gt;</description></item><item><title>Incident Response: What Actually Works at 3am</title><link>https://gazsecops.github.io/posts/incident-response-what-actually-works/</link><pubDate>Wed, 02 Jul 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/incident-response-what-actually-works/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I&amp;rsquo;m getting paged. Something about unusual outbound traffic.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Is it a breach?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I don&amp;rsquo;t know yet. I&amp;rsquo;ve been awake for forty seconds.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to tell the board by 8am.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I need to tell you what&amp;rsquo;s happening first. Give me an hour.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; You have thirty minutes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Incident response plans look great in documents. Neat flowcharts. Escalation matrices. Communication templates. Everyone has a role. Everyone knows what to do.&lt;/p&gt;
+&lt;p&gt;Then something actually happens and none of it works the way the document said it would.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+The best incident response plan is the one your team has actually practised. The second best is any plan at all. Most teams have neither.
+&lt;/aside&gt;
+&lt;p&gt;This post is about what incident response looks like in practice. Not the framework version. The version where you&amp;rsquo;re half awake, the logs are incomplete, and someone is asking you to confirm it&amp;rsquo;s not a breach before you&amp;rsquo;ve even found the right terminal.&lt;/p&gt;</description></item><item><title>DNS Security: What Actually Breaks</title><link>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</link><pubDate>Thu, 12 Jun 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; The website is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; But the servers are fine. CPU is low. No errors.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Your DNS records point at last week&amp;rsquo;s IP.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; DNS is just a phone book. How can that take us down?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Because your whole company uses it as the source of truth, whether you admit it or not.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;DNS is the most boring critical system you run. Nobody thinks about it until it fails, and when it fails everyone suddenly becomes very interested in TTLs.&lt;/p&gt;
+&lt;p&gt;You can patch servers. You can roll back deployments. You can add more replicas. None of that matters if clients can&amp;rsquo;t resolve names.&lt;/p&gt;
+&lt;p&gt;DNS security isn&amp;rsquo;t &amp;ldquo;do DNSSEC and you&amp;rsquo;re done&amp;rdquo;. It&amp;rsquo;s availability, integrity, and watching the bits that attackers like because you usually leave them alone.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+DNS isn't a phone book. It's a control plane.
+&lt;/aside&gt;
+&lt;p&gt;This post covers how DNS breaks in the real world, how attackers use it, what you can monitor without buying a new platform, and what to do at 3am when name resolution goes sideways.&lt;/p&gt;</description></item><item><title>Password Managers in 2025: What Actually Works</title><link>https://gazsecops.github.io/posts/password-managers-2025/</link><pubDate>Tue, 15 Apr 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/password-managers-2025/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;We need a password manager for a team.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;Which one?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;The secure one.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;They&amp;rsquo;re all secure. What do you actually need it to do?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;&amp;hellip;store passwords?&amp;rdquo;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation happens constantly. Organizations pick password managers the same way they pick any security tool - based on vendor pitch decks and analyst reports, not actual requirements.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Password managers solve different problems. KeePassXC for personal use, Bitwarden for teams, Vault for infrastructure. Pick based on what you're protecting and who needs access, not which one has the best marketing."
+&lt;/aside&gt;
+&lt;p&gt;The password manager landscape in 2025 splits into three categories: personal password managers, team password managers, and infrastructure secrets management. They&amp;rsquo;re not interchangeable.&lt;/p&gt;</description></item><item><title>SSH Hardening: What Actually Matters</title><link>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</link><pubDate>Tue, 18 Mar 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I&amp;rsquo;ve hardened SSH. Disabled root login, changed the port, installed fail2ban.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Changed the port?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Yeah, moved it to 2222. Security through obscurity.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; A port scan takes four seconds. What about certificate auth?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about what?&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;SSH hardening advice on the internet falls into two categories: the stuff that doesn&amp;rsquo;t matter (change the port, install fail2ban, add a banner) and the stuff that does matter but nobody explains properly (certificate auth, key management, agent forwarding risks, auditing).&lt;/p&gt;
+&lt;p&gt;This post is about the second category.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+The threat isn't someone brute-forcing your SSH port. It's the key that's been sitting in a developer's home directory since 2019, with no passphrase, copied to six machines.
+&lt;/aside&gt;
+&lt;p&gt;If you&amp;rsquo;re running Linux servers - on-prem, cloud, doesn&amp;rsquo;t matter - SSH is your management plane. If SSH is compromised, everything behind it is compromised. Treat it accordingly.&lt;/p&gt;</description></item><item><title>Bash: The Swiss Army Knife for Security Professionals</title><link>https://gazsecops.github.io/posts/bash-security-operators-guide/</link><pubDate>Tue, 03 Dec 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/bash-security-operators-guide/</guid><description>&lt;p&gt;Bash is on every Unix-like system you&amp;rsquo;ll touch. No installation required. No suspicious binaries to explain. Just a shell that&amp;rsquo;s already there, waiting to be used.&lt;/p&gt;
+&lt;p&gt;For security operators - red team, blue team, doesn&amp;rsquo;t matter - this makes Bash incredibly valuable. You can do reconnaissance, establish persistence, monitor systems, or respond to incidents without touching disk or installing tools. Living off the land, as they say.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The best tools are the ones already on the target. Bash is always there. No explanations needed when someone spots it running."
+&lt;/aside&gt;
+&lt;p&gt;This is a practical guide to using Bash for security operations. Not theory. Not vendor pitches. Techniques that work when you&amp;rsquo;re on a system and need to get things done.&lt;/p&gt;</description></item><item><title>Security Tools That Actually Work vs What Vendors Sell You</title><link>https://gazsecops.github.io/posts/security-tools-marketing-vs-reality/</link><pubDate>Tue, 12 Nov 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-tools-marketing-vs-reality/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Our AI-powered platform detects zero-day threats before they happen using quantum machine learning.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can I configure it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; No, it&amp;rsquo;s automated intelligence.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can I see logs?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; No, proprietary algorithms.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What exactly do I get?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Peace of mind.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Marketing departments discovered that 'AI-powered security' sells better than 'decent grep with sensible regex'. The rest is history."
+&lt;/aside&gt;
+&lt;p&gt;Security vendor marketing has drifted so far from reality that products and datasheets might as well be different languages. Bought a product that promises &amp;ldquo;zero false positive threat hunting&amp;rdquo;? Got a glorified SIEM with slightly better alerting. Purchased &amp;ldquo;autonomous incident response&amp;rdquo;? Got some prewritten playbooks and a lot of configuration work.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t about shitting on all vendors. Some make genuinely good products. But the gap between what security teams think they&amp;rsquo;re buying and what they actually deploy is massive. And that&amp;rsquo;s before the sales team starts explaining how the &amp;ldquo;AI&amp;rdquo; part works.&lt;/p&gt;</description></item><item><title>Canary Tokens: Early Warning Systems That Actually Work</title><link>https://gazsecops.github.io/posts/canary-tokens-early-warning/</link><pubDate>Wed, 06 Nov 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/canary-tokens-early-warning/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; How long did the attacker have access before you detected them?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; About six months.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; What finally tipped you off?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Customer complained their data showed up on a forum.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation happens more than you&amp;rsquo;d think. Not because organizations lack security tools. Because they lack detection that works when prevention fails.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Prevention gets all the budget. Detection gets what's left. Yet detection is what tells you when prevention failed - which it will."
+&lt;/aside&gt;
+&lt;p&gt;Canary tokens are silent tripwires. Fake data that looks valuable. When accessed, you get an alert. No false positives. No tuning. No complex rules. Just a clear signal: someone&amp;rsquo;s where they shouldn&amp;rsquo;t be.&lt;/p&gt;</description></item><item><title>Prometheus for Security: Monitoring What Actually Matters</title><link>https://gazsecops.github.io/posts/prometheus-security-monitoring/</link><pubDate>Fri, 18 Oct 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/prometheus-security-monitoring/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need better visibility into security events.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are you currently monitoring?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Service uptime. CPU. Memory. The usual.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about failed logins? Unexpected services? File changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; That&amp;rsquo;s what the SIEM is for.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; When did you last look at the SIEM?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;hellip;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This is the problem with security monitoring. Teams spend thousands on SIEMs that nobody uses. Meanwhile, Prometheus sits there collecting metrics, and nobody thinks to point it at security problems.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security monitoring doesn't need a six-figure SIEM budget. It needs metrics that matter, alerts that fire when something's actually wrong, and people who respond when they do."
+&lt;/aside&gt;
+&lt;p&gt;Prometheus is already in your infrastructure. It&amp;rsquo;s collecting metrics. It&amp;rsquo;s generating alerts. You just need to point it at the right things.&lt;/p&gt;</description></item></channel></rss>

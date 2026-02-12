@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zero-Trust on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/zero-trust/</link><description>Recent content in Zero-Trust on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/zero-trust/index.xml" rel="self" type="application/rss+xml"/><item><title>Zero Trust: What It Actually Means When You Have to Implement It</title><link>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</link><pubDate>Tue, 05 Aug 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Our zero trust platform provides seamless, frictionless, AI-powered security across your entire estate.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What does it actually do?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; It verifies every request, every time, everywhere.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; So does a firewall rule and a login page. What does yours do differently?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; &amp;hellip;it has a dashboard.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Zero trust has become the most abused term in security marketing. Every vendor has a zero trust product. Every slide deck has a zero trust slide. Every CISO has a zero trust initiative.&lt;/p&gt;
+&lt;p&gt;Most of them are buying a product and calling it a strategy.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Zero trust is not a product. It's the slow, painful process of removing implicit trust from your network, one assumption at a time.
+&lt;/aside&gt;
+&lt;p&gt;This post is about what zero trust actually looks like when you have to implement it. Not the conference version. The version where you&amp;rsquo;re staring at a network diagram, a list of legacy systems, and a budget that won&amp;rsquo;t cover half of what the vendors quoted you.&lt;/p&gt;</description></item></channel></rss>

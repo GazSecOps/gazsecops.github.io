@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/linux/</link><description>Recent content in Linux on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:40:51 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Smallstep step-ca: Running Internal PKI Without Losing Your Mind</title><link>https://gazsecops.github.io/posts/stepca-running-internal-pki/</link><pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/stepca-running-internal-pki/</guid><description>&lt;p&gt;If you read my post on building your own CA and thought &amp;ldquo;fine, but how do I actually issue certs without becoming the Certificate Person&amp;rdquo;, this is the next step.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;step-ca&lt;/code&gt; (Smallstep Certificate Authority) is the bit that makes internal PKI usable: automated issuance, short-lived certs, predictable renewal, and enough policy to stop someone minting a wildcard for your entire estate.&lt;/p&gt;
+&lt;p&gt;It also gives you a new thing to break at 3am.&lt;/p&gt;
+&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; Everything that talks TLS is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; But we rotated the certs yesterday.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; You rotated them to a CA chain nobody trusts. Also the CA is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; How can the CA being down break existing connections?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It doesn&amp;rsquo;t. The expiry storm you scheduled does.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+Internal PKI fails in three ways: you lose the keys, you lose the trust, or you lose control of issuance.
+&lt;/aside&gt;
+&lt;p&gt;This post covers a practical &lt;code&gt;step-ca&lt;/code&gt; setup on a Linux VM, what to lock down, how to issue and renew certs, and the failure modes I&amp;rsquo;ve seen in the wild.&lt;/p&gt;</description></item><item><title>Incident Response: What Actually Works at 3am</title><link>https://gazsecops.github.io/posts/incident-response-what-actually-works/</link><pubDate>Wed, 02 Jul 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/incident-response-what-actually-works/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I&amp;rsquo;m getting paged. Something about unusual outbound traffic.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Is it a breach?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I don&amp;rsquo;t know yet. I&amp;rsquo;ve been awake for forty seconds.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to tell the board by 8am.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; I need to tell you what&amp;rsquo;s happening first. Give me an hour.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; You have thirty minutes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Incident response plans look great in documents. Neat flowcharts. Escalation matrices. Communication templates. Everyone has a role. Everyone knows what to do.&lt;/p&gt;
+&lt;p&gt;Then something actually happens and none of it works the way the document said it would.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+The best incident response plan is the one your team has actually practised. The second best is any plan at all. Most teams have neither.
+&lt;/aside&gt;
+&lt;p&gt;This post is about what incident response looks like in practice. Not the framework version. The version where you&amp;rsquo;re half awake, the logs are incomplete, and someone is asking you to confirm it&amp;rsquo;s not a breach before you&amp;rsquo;ve even found the right terminal.&lt;/p&gt;</description></item><item><title>DNS Security: What Actually Breaks</title><link>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</link><pubDate>Thu, 12 Jun 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; The website is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; But the servers are fine. CPU is low. No errors.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Your DNS records point at last week&amp;rsquo;s IP.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; DNS is just a phone book. How can that take us down?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Because your whole company uses it as the source of truth, whether you admit it or not.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;DNS is the most boring critical system you run. Nobody thinks about it until it fails, and when it fails everyone suddenly becomes very interested in TTLs.&lt;/p&gt;
+&lt;p&gt;You can patch servers. You can roll back deployments. You can add more replicas. None of that matters if clients can&amp;rsquo;t resolve names.&lt;/p&gt;
+&lt;p&gt;DNS security isn&amp;rsquo;t &amp;ldquo;do DNSSEC and you&amp;rsquo;re done&amp;rdquo;. It&amp;rsquo;s availability, integrity, and watching the bits that attackers like because you usually leave them alone.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+DNS isn't a phone book. It's a control plane.
+&lt;/aside&gt;
+&lt;p&gt;This post covers how DNS breaks in the real world, how attackers use it, what you can monitor without buying a new platform, and what to do at 3am when name resolution goes sideways.&lt;/p&gt;</description></item><item><title>Password Managers in 2025: What Actually Works</title><link>https://gazsecops.github.io/posts/password-managers-2025/</link><pubDate>Tue, 15 Apr 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/password-managers-2025/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;We need a password manager for a team.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;Which one?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;The secure one.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;They&amp;rsquo;re all secure. What do you actually need it to do?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;&amp;hellip;store passwords?&amp;rdquo;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation happens constantly. Organizations pick password managers the same way they pick any security tool - based on vendor pitch decks and analyst reports, not actual requirements.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Password managers solve different problems. KeePassXC for personal use, Bitwarden for teams, Vault for infrastructure. Pick based on what you're protecting and who needs access, not which one has the best marketing."
+&lt;/aside&gt;
+&lt;p&gt;The password manager landscape in 2025 splits into three categories: personal password managers, team password managers, and infrastructure secrets management. They&amp;rsquo;re not interchangeable.&lt;/p&gt;</description></item><item><title>SSH Hardening: What Actually Matters</title><link>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</link><pubDate>Tue, 18 Mar 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ssh-hardening-what-actually-matters/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I&amp;rsquo;ve hardened SSH. Disabled root login, changed the port, installed fail2ban.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Changed the port?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Yeah, moved it to 2222. Security through obscurity.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; A port scan takes four seconds. What about certificate auth?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about what?&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;SSH hardening advice on the internet falls into two categories: the stuff that doesn&amp;rsquo;t matter (change the port, install fail2ban, add a banner) and the stuff that does matter but nobody explains properly (certificate auth, key management, agent forwarding risks, auditing).&lt;/p&gt;
+&lt;p&gt;This post is about the second category.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+The threat isn't someone brute-forcing your SSH port. It's the key that's been sitting in a developer's home directory since 2019, with no passphrase, copied to six machines.
+&lt;/aside&gt;
+&lt;p&gt;If you&amp;rsquo;re running Linux servers - on-prem, cloud, doesn&amp;rsquo;t matter - SSH is your management plane. If SSH is compromised, everything behind it is compromised. Treat it accordingly.&lt;/p&gt;</description></item><item><title>Bash: The Swiss Army Knife for Security Professionals</title><link>https://gazsecops.github.io/posts/bash-security-operators-guide/</link><pubDate>Tue, 03 Dec 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/bash-security-operators-guide/</guid><description>&lt;p&gt;Bash is on every Unix-like system you&amp;rsquo;ll touch. No installation required. No suspicious binaries to explain. Just a shell that&amp;rsquo;s already there, waiting to be used.&lt;/p&gt;
+&lt;p&gt;For security operators - red team, blue team, doesn&amp;rsquo;t matter - this makes Bash incredibly valuable. You can do reconnaissance, establish persistence, monitor systems, or respond to incidents without touching disk or installing tools. Living off the land, as they say.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The best tools are the ones already on the target. Bash is always there. No explanations needed when someone spots it running."
+&lt;/aside&gt;
+&lt;p&gt;This is a practical guide to using Bash for security operations. Not theory. Not vendor pitches. Techniques that work when you&amp;rsquo;re on a system and need to get things done.&lt;/p&gt;</description></item><item><title>Prometheus for Security: Monitoring What Actually Matters</title><link>https://gazsecops.github.io/posts/prometheus-security-monitoring/</link><pubDate>Fri, 18 Oct 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/prometheus-security-monitoring/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need better visibility into security events.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are you currently monitoring?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Service uptime. CPU. Memory. The usual.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about failed logins? Unexpected services? File changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; That&amp;rsquo;s what the SIEM is for.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; When did you last look at the SIEM?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;hellip;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This is the problem with security monitoring. Teams spend thousands on SIEMs that nobody uses. Meanwhile, Prometheus sits there collecting metrics, and nobody thinks to point it at security problems.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security monitoring doesn't need a six-figure SIEM budget. It needs metrics that matter, alerts that fire when something's actually wrong, and people who respond when they do."
+&lt;/aside&gt;
+&lt;p&gt;Prometheus is already in your infrastructure. It&amp;rsquo;s collecting metrics. It&amp;rsquo;s generating alerts. You just need to point it at the right things.&lt;/p&gt;</description></item></channel></rss>

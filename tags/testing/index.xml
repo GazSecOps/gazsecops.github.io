@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Testing on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/testing/</link><description>Recent content in Testing on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:40:51 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/testing/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 4 - Testing Before You Ship (Or: Stop Discovering Bugs in Production)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</link><pubDate>Fri, 02 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-4/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ve tested the model. It works.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What did you test?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We ran it on the validation set. 94% accuracy.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What edge cases?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The ones that will break it in production.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We&amp;rsquo;ll handle those when we see them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;And that&amp;rsquo;s how you end up debugging at 3am.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Testing that your model loads and returns predictions is not testing. That's checking if Python still works. Testing is finding out all the ways your model breaks before your users do."
+&lt;/aside&gt;
+&lt;p&gt;Part 4 of the series. This one&amp;rsquo;s about testing AI systems before deployment. Not the &amp;ldquo;it runs on my laptop&amp;rdquo; kind of testing. The &amp;ldquo;I&amp;rsquo;ve actively tried to break this and couldn&amp;rsquo;t&amp;rdquo; kind of testing.&lt;/p&gt;</description></item></channel></rss>

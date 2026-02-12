@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Threat-Analysis on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/threat-analysis/</link><description>Recent content in Threat-Analysis on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/threat-analysis/index.xml" rel="self" type="application/rss+xml"/><item><title>Threat Analysis: What Actually Works</title><link>https://gazsecops.github.io/posts/threat-analysis-practical-guide/</link><pubDate>Sun, 08 Feb 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/threat-analysis-practical-guide/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; We have thousands of systems. How do we prioritize what to protect?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-security"&gt;Security:&lt;/span&gt; Threat model everything?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; We don&amp;rsquo;t have time for that. We need something practical.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-security"&gt;Security:&lt;/span&gt; What&amp;rsquo;s your biggest nightmare scenario?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-ciso"&gt;CISO:&lt;/span&gt; Ransomware taking down core systems. Reputation damage. Regulatory fines.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-security"&gt;Security:&lt;/span&gt; Start there. Prioritize protecting against your worst nightmares. That&amp;rsquo;s threat analysis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"The best threat analysis isn't a document. It's prioritized action based on what actually matters."
+&lt;/aside&gt;
+&lt;p&gt;Threat analysis gets a bad reputation. Over-complicated frameworks. Endless meetings. Documents nobody reads. Fancy diagrams that look impressive but change nothing.&lt;/p&gt;
+&lt;p&gt;Done wrong, it&amp;rsquo;s box-ticking security theater. Done right, it&amp;rsquo;s the foundation of effective security.&lt;/p&gt;
+&lt;p&gt;The difference: focus on what actually matters to your business, not what some framework says you should care about.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t academic theory. It&amp;rsquo;s what works in practice at companies ranging from startups to global enterprises.&lt;/p&gt;</description></item></channel></rss>

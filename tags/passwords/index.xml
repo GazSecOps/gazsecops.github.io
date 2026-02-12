@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Passwords on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/passwords/</link><description>Recent content in Passwords on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/passwords/index.xml" rel="self" type="application/rss+xml"/><item><title>Password Managers in 2025: What Actually Works</title><link>https://gazsecops.github.io/posts/password-managers-2025/</link><pubDate>Tue, 15 Apr 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/password-managers-2025/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;We need a password manager for a team.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;Which one?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;The secure one.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; &amp;ldquo;They&amp;rsquo;re all secure. What do you actually need it to do?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;ldquo;&amp;hellip;store passwords?&amp;rdquo;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation happens constantly. Organizations pick password managers the same way they pick any security tool - based on vendor pitch decks and analyst reports, not actual requirements.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Password managers solve different problems. KeePassXC for personal use, Bitwarden for teams, Vault for infrastructure. Pick based on what you're protecting and who needs access, not which one has the best marketing."
+&lt;/aside&gt;
+&lt;p&gt;The password manager landscape in 2025 splits into three categories: personal password managers, team password managers, and infrastructure secrets management. They&amp;rsquo;re not interchangeable.&lt;/p&gt;</description></item></channel></rss>

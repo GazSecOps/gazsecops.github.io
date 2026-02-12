@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deception on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/deception/</link><description>Recent content in Deception on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/deception/index.xml" rel="self" type="application/rss+xml"/><item><title>Canary Tokens: Early Warning Systems That Actually Work</title><link>https://gazsecops.github.io/posts/canary-tokens-early-warning/</link><pubDate>Wed, 06 Nov 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/canary-tokens-early-warning/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; How long did the attacker have access before you detected them?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; About six months.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; What finally tipped you off?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Customer complained their data showed up on a forum.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation happens more than you&amp;rsquo;d think. Not because organizations lack security tools. Because they lack detection that works when prevention fails.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Prevention gets all the budget. Detection gets what's left. Yet detection is what tells you when prevention failed - which it will."
+&lt;/aside&gt;
+&lt;p&gt;Canary tokens are silent tripwires. Fake data that looks valuable. When accessed, you get an alert. No false positives. No tuning. No complex rules. Just a clear signal: someone&amp;rsquo;s where they shouldn&amp;rsquo;t be.&lt;/p&gt;</description></item></channel></rss>

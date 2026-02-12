@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/monitoring/</link><description>Recent content in Monitoring on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 2 - Monitoring That Actually Works</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</link><pubDate>Fri, 12 Dec 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-2/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The model&amp;rsquo;s working fine. Look, uptime is 99.9%!&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; And the accuracy?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; What?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The accuracy. What percentage of predictions are correct?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; We don&amp;rsquo;t track that.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then you don&amp;rsquo;t know if it&amp;rsquo;s working.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Your monitoring dashboard shows five green lights and one red one. The red one is 'model accuracy: unknown'. That's not a monitoring problem. That's a career problem."
+&lt;/aside&gt;
+&lt;p&gt;Part 2 of the series on running AI systems. This one&amp;rsquo;s about monitoring. Not the useless kind vendors sell you. The kind that actually tells you when things are broken before management finds out from Twitter.&lt;/p&gt;</description></item><item><title>DNS Security: What Actually Breaks</title><link>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</link><pubDate>Thu, 12 Jun 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/dns-security-what-actually-breaks/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-oncall"&gt;On-call:&lt;/span&gt; The website is down.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; But the servers are fine. CPU is low. No errors.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Your DNS records point at last week&amp;rsquo;s IP.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; DNS is just a phone book. How can that take us down?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Because your whole company uses it as the source of truth, whether you admit it or not.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;DNS is the most boring critical system you run. Nobody thinks about it until it fails, and when it fails everyone suddenly becomes very interested in TTLs.&lt;/p&gt;
+&lt;p&gt;You can patch servers. You can roll back deployments. You can add more replicas. None of that matters if clients can&amp;rsquo;t resolve names.&lt;/p&gt;
+&lt;p&gt;DNS security isn&amp;rsquo;t &amp;ldquo;do DNSSEC and you&amp;rsquo;re done&amp;rdquo;. It&amp;rsquo;s availability, integrity, and watching the bits that attackers like because you usually leave them alone.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+DNS isn't a phone book. It's a control plane.
+&lt;/aside&gt;
+&lt;p&gt;This post covers how DNS breaks in the real world, how attackers use it, what you can monitor without buying a new platform, and what to do at 3am when name resolution goes sideways.&lt;/p&gt;</description></item><item><title>Prometheus for Security: Monitoring What Actually Matters</title><link>https://gazsecops.github.io/posts/prometheus-security-monitoring/</link><pubDate>Fri, 18 Oct 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/prometheus-security-monitoring/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need better visibility into security events.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are you currently monitoring?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Service uptime. CPU. Memory. The usual.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What about failed logins? Unexpected services? File changes?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; That&amp;rsquo;s what the SIEM is for.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; When did you last look at the SIEM?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; &amp;hellip;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This is the problem with security monitoring. Teams spend thousands on SIEMs that nobody uses. Meanwhile, Prometheus sits there collecting metrics, and nobody thinks to point it at security problems.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security monitoring doesn't need a six-figure SIEM budget. It needs metrics that matter, alerts that fire when something's actually wrong, and people who respond when they do."
+&lt;/aside&gt;
+&lt;p&gt;Prometheus is already in your infrastructure. It&amp;rsquo;s collecting metrics. It&amp;rsquo;s generating alerts. You just need to point it at the right things.&lt;/p&gt;</description></item></channel></rss>

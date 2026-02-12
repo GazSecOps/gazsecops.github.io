@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Trust-Boundary on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/trust-boundary/</link><description>Recent content in Trust-Boundary on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:49:05 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/trust-boundary/index.xml" rel="self" type="application/rss+xml"/><item><title>SaaS + PaaS Gateway Security Pattern: Trust Boundaries and Data Sovereignty</title><link>https://gazsecops.github.io/posts/saas-paas-gateway-security-pattern/</link><pubDate>Wed, 11 Feb 2026 16:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/saas-paas-gateway-security-pattern/</guid><description>&lt;h1 id="saas--paas-gateway-security-pattern-trust-boundaries-and-data-sovereignty"&gt;SaaS + PaaS Gateway Security Pattern: Trust Boundaries and Data Sovereignty&lt;/h1&gt;
+&lt;p&gt;Modern SaaS platforms often need to integrate with customer data stored in Azure. The user logs into the SaaS UI, but the actual data lives in the customer&amp;rsquo;s Azure subscription. How do you provide real-time access without storing customer data in the SaaS database?&lt;/p&gt;
+&lt;p&gt;The answer: a PaaS API gateway that acts as a controlled bridge.&lt;/p&gt;
+&lt;h2 id="the-architecture"&gt;The Architecture&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Third-Party SaaS Platform
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (You don&amp;#39;t control, don&amp;#39;t store data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; OAuth / JWT / API Key (Authentication)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Your PaaS API Gateway
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (You control this middle layer)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Azure Services - Your Tenant
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; → Cosmos DB (stores data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; → SQL Database (stores data)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; → Azure Blob Storage (files)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; → Azure Key Vault (secrets)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Validated Response (Logged)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Data sent to SaaS Web UI for display
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="why-this-is-best-practice"&gt;Why This IS Best Practice&lt;/h2&gt;
+&lt;h3 id="1-trust-boundary"&gt;1. Trust Boundary&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Data never touches SaaS storage.&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automation on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/automation/</link><description>Recent content in Automation on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Beyond Scanning: What Security as Code Really Means</title><link>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</link><pubDate>Sat, 22 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; We&amp;rsquo;ve got security as code! Look, the dashboard shows our scans running in CI.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; That&amp;rsquo;s scanning as code. Not the same thing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; What&amp;rsquo;s the difference?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; About five years of security incidents you haven&amp;rsquo;t had yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Adding a scanner to your pipeline is like adding a smoke detector to a building. Useful, but not the same as building with fire-resistant materials in the first place."
+&lt;/aside&gt;
+&lt;p&gt;Security as Code isn&amp;rsquo;t about running more scanners automatically. It&amp;rsquo;s about fundamentally changing how security gets built into systems. Most organizations miss this. They automate detection, declare victory, then wonder why breaches still happen.&lt;/p&gt;</description></item><item><title>Security as Code: From Checklists to Automation</title><link>https://gazsecops.github.io/posts/security-as-code/</link><pubDate>Thu, 18 Sep 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-as-code/</guid><description>&lt;p&gt;&amp;ldquo;Here&amp;rsquo;s the security checklist for the new release.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re deploying next week. When can we do the review?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;The review takes two weeks minimum. You scheduled it last month.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;we didn&amp;rsquo;t.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This is the problem with security checklists. They&amp;rsquo;re designed for a world where you deploy quarterly. In continuous deployment environments, they&amp;rsquo;re the wrong tool.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"Security checklists codify knowledge but don't scale. Security as Code codifies requirements into executable tests. Checklists tell you what to check. Code checks it for you, every time."
+&lt;/aside&gt;
+&lt;p&gt;The evolution from checklists to code isn&amp;rsquo;t about abandoning security knowledge. It&amp;rsquo;s about making security verification scale with modern development practices.&lt;/p&gt;</description></item></channel></rss>

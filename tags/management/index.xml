@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Management on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/management/</link><description>Recent content in Management on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:44:12 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/management/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 7 - Why Smart People Keep Making Dumb Decisions</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</link><pubDate>Fri, 23 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</guid><description>&lt;p&gt;Six parts of this series explaining what goes wrong with AI systems. Testing that doesn&amp;rsquo;t happen. Monitoring that doesn&amp;rsquo;t exist. Models shipped before they&amp;rsquo;re ready. Incidents that could have been prevented.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;d think after reading all that, teams would learn. They don&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;The same mistakes happen over and over. Not because people are stupid. Because the organizational incentives guarantee failure.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"You can have thorough testing or you can ship by Friday. You can't have both. Management always picks Friday."
+&lt;/aside&gt;
+&lt;p&gt;Part 7. The last of the core series. Why organizations are structurally incapable of running AI systems properly, and what you can do about it (spoiler: not much).&lt;/p&gt;</description></item><item><title>AI Systems Responsibility: Part 5 - When to Say No (And How to Make It Stick)</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</link><pubDate>Fri, 09 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-5/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need to deploy the customer sentiment analysis model by end of week.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It&amp;rsquo;s not ready.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The client&amp;rsquo;s expecting it.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; It fails on 30% of non-English inputs. Your client has international customers.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We&amp;rsquo;ll fix that in the next release.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; No.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; What do you mean, no?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; I mean no. We&amp;rsquo;re not deploying broken software because someone made a promise we can&amp;rsquo;t keep.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This conversation never goes well. Have it anyway.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"The person saying 'we can't ship this' is always the bad guy. Right up until production breaks and suddenly everyone's asking why we didn't catch this in testing."
+&lt;/aside&gt;
+&lt;p&gt;Part 5 of the series. This one&amp;rsquo;s about saying no. When to do it, how to do it, and how to not get fired for it.&lt;/p&gt;</description></item></channel></rss>

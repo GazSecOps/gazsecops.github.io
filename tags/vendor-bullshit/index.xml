@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vendor-Bullshit on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/vendor-bullshit/</link><description>Recent content in Vendor-Bullshit on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Sun, 08 Feb 2026 18:56:28 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/vendor-bullshit/index.xml" rel="self" type="application/rss+xml"/><item><title>Security Tools That Actually Work vs What Vendors Sell You</title><link>https://gazsecops.github.io/posts/security-tools-marketing-vs-reality/</link><pubDate>Tue, 12 Nov 2024 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-tools-marketing-vs-reality/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Our AI-powered platform detects zero-day threats before they happen using quantum machine learning.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can I configure it?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; No, it&amp;rsquo;s automated intelligence.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Can I see logs?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; No, proprietary algorithms.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What exactly do I get?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Peace of mind.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Marketing departments discovered that 'AI-powered security' sells better than 'decent grep with sensible regex'. The rest is history."
+&lt;/aside&gt;
+&lt;p&gt;Security vendor marketing has drifted so far from reality that products and datasheets might as well be different languages. Bought a product that promises &amp;ldquo;zero false positive threat hunting&amp;rdquo;? Got a glorified SIEM with slightly better alerting. Purchased &amp;ldquo;autonomous incident response&amp;rdquo;? Got some prewritten playbooks and a lot of configuration work.&lt;/p&gt;
+&lt;p&gt;This isn&amp;rsquo;t about shitting on all vendors. Some make genuinely good products. But the gap between what security teams think they&amp;rsquo;re buying and what they actually deploy is massive. And that&amp;rsquo;s before the sales team starts explaining how the &amp;ldquo;AI&amp;rdquo; part works.&lt;/p&gt;</description></item></channel></rss>

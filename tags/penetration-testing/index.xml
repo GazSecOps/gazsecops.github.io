@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Penetration-Testing on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/penetration-testing/</link><description>Recent content in Penetration-Testing on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 12:32:36 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/penetration-testing/index.xml" rel="self" type="application/rss+xml"/><item><title>Penetration Testing: What Actually Works vs What You Usually Get</title><link>https://gazsecops.github.io/posts/penetration-testing-what-works/</link><pubDate>Thu, 20 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/penetration-testing-what-works/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; We need a penetration test for compliance.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What are we testing?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; Everything.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; That&amp;rsquo;s not a scope. What&amp;rsquo;s the goal?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Management:&lt;/span&gt; The goal is to check the box that says we had a penetration test.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Then you don&amp;rsquo;t need a pentest. You need a rubber stamp.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Most penetration testing is security theater. A PDF appears once a year, lists findings you already knew about, gets filed away, nothing changes. The checkbox is ticked. Compliance is satisfied. Security hasn&amp;rsquo;t improved.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+A pentest that tells you what you already know is an expensive way to avoid fixing problems. A pentest that surprises you is valuable - but only if you actually fix what it finds.
+&lt;/aside&gt;
+&lt;p&gt;This isn&amp;rsquo;t about shitting on pentesters. Good pentesters are worth their weight in gold. This is about how to get actual value from penetration testing instead of buying an expensive PDF that nobody reads.&lt;/p&gt;</description></item></channel></rss>

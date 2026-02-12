@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Identity on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/identity/</link><description>Recent content in Identity on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:57:09 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/identity/index.xml" rel="self" type="application/rss+xml"/><item><title>Workload Identity: Giving Your Services an Identity Without the Secret Sprawl</title><link>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</link><pubDate>Sun, 08 Feb 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The database connection is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Check the credentials in the config.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Which config? There are twelve.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The one with the password that expires every 90 days.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; That expired yesterday. Nobody told me.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Did you check the rotation runbook?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The runbook is in a wiki that requires the database to log in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Service accounts. API keys. Connection strings. Database passwords scattered across config files, environment variables, Kubernetes secrets, and that one spreadsheet someone maintains &amp;ldquo;just in case&amp;rdquo;. This is how most organisations handle non-human identity. It&amp;rsquo;s also how most organisations get compromised.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Every hardcoded credential is a future incident waiting to happen. The question isn't whether it leaks - it's whether you notice when it does.
+&lt;/aside&gt;
+&lt;p&gt;Workload identity is about giving your services proper identities without the secret sprawl. Not another password to rotate. Not another API key to revoke when it appears in a GitHub commit. An identity that your infrastructure manages, rotates, and revokes automatically.&lt;/p&gt;
+&lt;p&gt;This post covers what workload identity actually means, how to implement it on major clouds and on-prem, and the practical patterns that make it survivable.&lt;/p&gt;</description></item><item><title>Zero Trust: What It Actually Means When You Have to Implement It</title><link>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</link><pubDate>Tue, 05 Aug 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/zero-trust-what-it-actually-means/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; Our zero trust platform provides seamless, frictionless, AI-powered security across your entire estate.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; What does it actually do?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; It verifies every request, every time, everywhere.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; So does a firewall rule and a login page. What does yours do differently?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-vendor"&gt;Vendor:&lt;/span&gt; &amp;hellip;it has a dashboard.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Zero trust has become the most abused term in security marketing. Every vendor has a zero trust product. Every slide deck has a zero trust slide. Every CISO has a zero trust initiative.&lt;/p&gt;
+&lt;p&gt;Most of them are buying a product and calling it a strategy.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Zero trust is not a product. It's the slow, painful process of removing implicit trust from your network, one assumption at a time.
+&lt;/aside&gt;
+&lt;p&gt;This post is about what zero trust actually looks like when you have to implement it. Not the conference version. The version where you&amp;rsquo;re staring at a network diagram, a list of legacy systems, and a budget that won&amp;rsquo;t cover half of what the vendors quoted you.&lt;/p&gt;</description></item></channel></rss>

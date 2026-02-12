@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Spiffe on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/spiffe/</link><description>Recent content in Spiffe on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:57:09 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/spiffe/index.xml" rel="self" type="application/rss+xml"/><item><title>Workload Identity: Giving Your Services an Identity Without the Secret Sprawl</title><link>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</link><pubDate>Sun, 08 Feb 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/workload-identity-beyond-api-keys/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The database connection is failing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Check the credentials in the config.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; Which config? There are twelve.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; The one with the password that expires every 90 days.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; That expired yesterday. Nobody told me.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Sysadmin:&lt;/span&gt; Did you check the rotation runbook?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-engineer"&gt;Engineer:&lt;/span&gt; The runbook is in a wiki that requires the database to log in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Service accounts. API keys. Connection strings. Database passwords scattered across config files, environment variables, Kubernetes secrets, and that one spreadsheet someone maintains &amp;ldquo;just in case&amp;rdquo;. This is how most organisations handle non-human identity. It&amp;rsquo;s also how most organisations get compromised.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+Every hardcoded credential is a future incident waiting to happen. The question isn't whether it leaks - it's whether you notice when it does.
+&lt;/aside&gt;
+&lt;p&gt;Workload identity is about giving your services proper identities without the secret sprawl. Not another password to rotate. Not another API key to revoke when it appears in a GitHub commit. An identity that your infrastructure manages, rotates, and revokes automatically.&lt;/p&gt;
+&lt;p&gt;This post covers what workload identity actually means, how to implement it on major clouds and on-prem, and the practical patterns that make it survivable.&lt;/p&gt;</description></item></channel></rss>

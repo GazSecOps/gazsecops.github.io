@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Culture on Gareth's Engineering Blog</title><link>https://gazsecops.github.io/tags/culture/</link><description>Recent content in Culture on Gareth's Engineering Blog</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Thu, 12 Feb 2026 09:44:12 +0000</lastBuildDate><atom:link href="https://gazsecops.github.io/tags/culture/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Systems Responsibility: Part 7 - Why Smart People Keep Making Dumb Decisions</title><link>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</link><pubDate>Fri, 23 Jan 2026 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/ai-systems-responsibility-part-7/</guid><description>&lt;p&gt;Six parts of this series explaining what goes wrong with AI systems. Testing that doesn&amp;rsquo;t happen. Monitoring that doesn&amp;rsquo;t exist. Models shipped before they&amp;rsquo;re ready. Incidents that could have been prevented.&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;d think after reading all that, teams would learn. They don&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;The same mistakes happen over and over. Not because people are stupid. Because the organizational incentives guarantee failure.&lt;/p&gt;
+&lt;aside class="pullquote"&gt;
+"You can have thorough testing or you can ship by Friday. You can't have both. Management always picks Friday."
+&lt;/aside&gt;
+&lt;p&gt;Part 7. The last of the core series. Why organizations are structurally incapable of running AI systems properly, and what you can do about it (spoiler: not much).&lt;/p&gt;</description></item><item><title>Beyond Scanning: What Security as Code Really Means</title><link>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</link><pubDate>Sat, 22 Nov 2025 10:00:00 +0000</pubDate><guid>https://gazsecops.github.io/posts/security-as-code-beyond-scanning/</guid><description>&lt;div class="dialogue"&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; We&amp;rsquo;ve got security as code! Look, the dashboard shows our scans running in CI.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; That&amp;rsquo;s scanning as code. Not the same thing.&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-management"&gt;Engineering manager:&lt;/span&gt; What&amp;rsquo;s the difference?&lt;/p&gt;
+&lt;p&gt;&lt;span class="speaker speaker-sysadmin"&gt;Me:&lt;/span&gt; About five years of security incidents you haven&amp;rsquo;t had yet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;aside class="pullquote"&gt;
+"Adding a scanner to your pipeline is like adding a smoke detector to a building. Useful, but not the same as building with fire-resistant materials in the first place."
+&lt;/aside&gt;
+&lt;p&gt;Security as Code isn&amp;rsquo;t about running more scanners automatically. It&amp;rsquo;s about fundamentally changing how security gets built into systems. Most organizations miss this. They automate detection, declare victory, then wonder why breaches still happen.&lt;/p&gt;</description></item></channel></rss>
